@@ -10,8 +10,6 @@ public class CameraFollow : MonoBehaviour
     public float leftLimit = 0f;
     public float rightLimit = 20f;
 
-    private float currentLookAhead;
-
     void LateUpdate()
     {
         if (target == null) return;

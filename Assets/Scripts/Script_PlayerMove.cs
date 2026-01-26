@@ -6,7 +6,7 @@ public class AutoWalker : MonoBehaviour
     public float rightBoundary = 20f; // Set this to the end of your level
     public float leftBoundary = 0f;    // Set this to the start of your level
 
-    public static bool movingRight = true;
+    private bool movingRight = true;
 
     void Update()
     {
