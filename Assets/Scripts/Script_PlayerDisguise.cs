@@ -20,7 +20,7 @@ public class PlayerDisguise : MonoBehaviour
             spriteRenderer.sprite = sprThief;
 
         if (Keyboard.current.digit2Key.wasPressedThisFrame)
-                spriteRenderer.sprite = sprGirl;
+            spriteRenderer.sprite = sprGirl;
 
         if (Keyboard.current.digit3Key.wasPressedThisFrame)
             spriteRenderer.sprite = sprThug;
