@@ -5,6 +5,7 @@ public class GameStateManager : MonoBehaviour
 {
     public GameObject mainMenuGroup;
     public GameObject tutorialGroup;
+    public GameObject BGMHandler;
     public int money = 0;
     public bool hasKey = false;
     public string menuScene;
@@ -14,10 +15,12 @@ public class GameStateManager : MonoBehaviour
     public Sprite ending1;
 
     private SpriteRenderer sr;
+    private AudioSource audioSource;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void StartTutorial()
@@ -73,5 +76,11 @@ public class GameStateManager : MonoBehaviour
         }
 
         //SceneManager.LoadScene(endScene);
+    }
+
+
+    public void ChangeBGM()
+    {
+
     }
 }
