@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3013900806911740515}
   - component: {fileID: 4104296178456919945}
   - component: {fileID: 5528735213653047108}
+  - component: {fileID: 2397476297024986367}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -123,3 +124,25 @@ MonoBehaviour:
   sprThief: {fileID: 1448681773398444449, guid: 9362a7f0f7e2afc43ac20cfabc6377f2, type: 3}
   sprGirl: {fileID: -1364801473722314158, guid: dcd6f52a46f81ba4caa241f343aa972b, type: 3}
   sprThug: {fileID: -6792415237364967130, guid: 590e0d97697ed6140ba4c06f8b4b0d60, type: 3}
+--- !u!95 &2397476297024986367
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516886073319634894}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b45822c636944fa41922f87e55ed1326, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
