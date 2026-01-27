@@ -10,6 +10,8 @@ public class JewelryBoss : MonoBehaviour
     public Sprite[] hearts;
     public Sprite[] shock;
     public Sprite[] sad;
+    public Sprite[] readyGun;
+    public Sprite[] shootGun;
 
     public bool thief = false;
     public bool girl = false;
@@ -26,6 +28,12 @@ public class JewelryBoss : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         SetAnimation(idle); // default animation
+
+        // disable policemen
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -76,13 +84,25 @@ public class JewelryBoss : MonoBehaviour
         switch (playerController.currentDisguise)
         {
             case "thief":
-                thief = true;
+                SetAnimation(readyGun);
+                // ENDING 2: jail with thug(s)
+                StartCoroutine(gameStateManager.DisplayEnding(2));
                 break;
             case "girl":
-                girl = true;
+                if (!gameStateManager.shopRobbed)
+                    SetAnimation(hearts);
                 break;
             case "thug":
-                thug = true;
+                if (girl)
+                {
+                    SetAnimation(shootGun);
+                    // ENDING 3: fucking dies
+                    StartCoroutine(gameStateManager.DisplayEnding(3));
+                }
+                else
+                {
+                    StartCoroutine(gameStateManager.DisplayEnding(2));
+                }
                 break;
         }
     }
@@ -95,5 +115,36 @@ public class JewelryBoss : MonoBehaviour
         timer = 0f;
         if (currentAnimation.Length > 0)
             sr.sprite = currentAnimation[0];
+    }
+
+    public void ReturnToShop()
+    {
+        Vector3 pos = transform.localPosition;
+        pos.x = 0f;
+        transform.localPosition = pos;
+        sr.sortingLayerName = "NPC(inside)";
+        SetAnimation(idle);
+    }
+
+    public void SpawnPolice()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        SetAnimation(idle);
+    }
+    public void SpawnBodyguard()
+    {
+        ReturnToShop();
+        SetAnimation(idle);
+        // todo: need sprite
+    }
+
+    public void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }

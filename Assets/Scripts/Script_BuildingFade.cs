@@ -7,6 +7,7 @@ public class BuildingFade : MonoBehaviour
     public SpriteRenderer topSprite;   // assign the top sprite
     public float fadeSpeed = 2f;       // how fast it fades
     public bool isJewelryShop = false;
+
     private bool playerNear = false;
 
     void Update()
@@ -50,6 +51,7 @@ public class BuildingFade : MonoBehaviour
 
         if (playerController.currentDisguise == "thief")
         {
+            gameStateManager.shopRobbed = true;
             gameStateManager.money += 100;
             // play stealing animation
         }
