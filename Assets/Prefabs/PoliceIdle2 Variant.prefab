@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3461613916318571598
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420111704362124595, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200416560498259771, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_Name
+      value: PoliceIdle2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643231857022820197, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: 'frames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 618134562693981588, guid: 5d7dac48047f3404e821d98a6cfc4901, type: 3}
+    - target: {fileID: 4643231857022820197, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: 'frames.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2129086810837898700, guid: 42f62efabab01ee4dbba3d2e35e0b5fe, type: 3}
+    - target: {fileID: 8801374152548968504, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 618134562693981588, guid: 5d7dac48047f3404e821d98a6cfc4901, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}

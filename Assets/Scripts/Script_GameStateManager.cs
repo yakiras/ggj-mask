@@ -71,6 +71,6 @@ public class GameStateManager : MonoBehaviour
                 break;
         }
 
-        SceneManager.LoadScene(endScene);
+        //SceneManager.LoadScene(endScene);
     }
 }
