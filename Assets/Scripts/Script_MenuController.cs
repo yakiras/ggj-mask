@@ -22,20 +22,20 @@ public class MenuController : MonoBehaviour
         Debug.Log("Switched to Tutorial");
     }
 
-    public void BackToMainMenu()
-    {
-        if (mainMenuGroup != null)
-        {
-            mainMenuGroup.SetActive(true);
-        }
+    //public void BackToMainMenu()
+    //{
+    //    if (mainMenuGroup != null)
+    //    {
+    //        mainMenuGroup.SetActive(true);
+    //    }
 
-        if (tutorialGroup != null)
-        {
-            tutorialGroup.SetActive(false);
-        }
+    //    if (tutorialGroup != null)
+    //    {
+    //        tutorialGroup.SetActive(false);
+    //    }
 
-        Debug.Log("Switched to Main Menu");
-    }
+    //    Debug.Log("Switched to Main Menu");
+    //}
 
     public void StartGame()
     {

@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SpriteSwitcher : MonoBehaviour
+public class PlayerDisguise : MonoBehaviour
 {
+    public string currentDisguise;
     public Sprite[] thiefWalk;
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
     public float fps = 5.0f;
+    public bool inputEnabled = true;
 
     private float frameRate; // seconds per frame
 
@@ -19,15 +21,31 @@ public class SpriteSwitcher : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         frameRate = 1.0f / fps;
+        currentDisguise = "thief";
         SetAnimation(thiefWalk); // default animation
     }
 
     void Update()
     {
         // Switch animations with keys
-        if (Keyboard.current.digit1Key.wasPressedThisFrame) SetAnimation(thiefWalk);
-        if (Keyboard.current.digit2Key.wasPressedThisFrame) SetAnimation(girlWalk);
-        if (Keyboard.current.digit3Key.wasPressedThisFrame) SetAnimation(thugWalk);
+        if (inputEnabled)
+        {
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                currentDisguise = "thief";
+                SetAnimation(thiefWalk);
+            }
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                currentDisguise = "girl";
+                SetAnimation(girlWalk);
+            }
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                currentDisguise = "thug";
+                SetAnimation(thugWalk);
+            }
+        }
 
         // Update frame
         if (currentAnimation == null || currentAnimation.Length == 0) return;

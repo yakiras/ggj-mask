@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5528735213653047108}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,4 +135,4 @@ MonoBehaviour:
   thugWalk:
   - {fileID: -269558015489966912, guid: 82a248ebf6292c54dbd46ec13f0bd8db, type: 3}
   - {fileID: -5293725373246974814, guid: 10ecbba320819ff4e94b38573e3c9b18, type: 3}
-  fps: 5
+  fps: 10
