@@ -6,6 +6,7 @@ public class GameStateManager : MonoBehaviour
     public GameObject mainMenuGroup;
     public GameObject tutorialGroup;
     public int money = 0;
+    public bool hasKey = false;
     public string menuScene;
     public string gameScene;
     public string endScene;

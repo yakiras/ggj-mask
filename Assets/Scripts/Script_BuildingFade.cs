@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class BuildingFade : MonoBehaviour
 {
+    public GameStateManager gameStateManager;
     public SpriteRenderer topSprite;   // assign the top sprite
     public float fadeSpeed = 2f;       // how fast it fades
+    public bool isJewelryShop = false;
     private bool playerNear = false;
 
     void Update()
@@ -30,7 +32,12 @@ public class BuildingFade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerNear = true;
+            if (isJewelryShop)
+            {
+                if (gameStateManager.hasKey)
+                    playerNear = true;
+            }
+            else { playerNear = true; }
         }
     }
 
