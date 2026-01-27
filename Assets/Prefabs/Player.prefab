@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3013900806911740515}
   - component: {fileID: 4104296178456919945}
   - component: {fileID: 5528735213653047108}
-  - component: {fileID: 2397476297024986367}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -30,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4, y: -4, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342737323c90d084bb1f8cb7dfaef5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoWalker
-  moveSpeed: 5
-  rightBoundary: 20
+  moveSpeed: 3
+  rightBoundary: 30
   leftBoundary: 0
 --- !u!212 &4104296178456919945
 SpriteRenderer:
@@ -99,7 +98,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1448681773398444449, guid: 9362a7f0f7e2afc43ac20cfabc6377f2, type: 3}
+  m_Sprite: {fileID: -7661419856922177326, guid: b713e589c1c1d2f4fa9d7d547d4668e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,28 +120,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920870f50ea92d84e824a3e1c118bc0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDisguise
-  sprThief: {fileID: 1448681773398444449, guid: 9362a7f0f7e2afc43ac20cfabc6377f2, type: 3}
-  sprGirl: {fileID: -1364801473722314158, guid: dcd6f52a46f81ba4caa241f343aa972b, type: 3}
-  sprThug: {fileID: -6792415237364967130, guid: 590e0d97697ed6140ba4c06f8b4b0d60, type: 3}
---- !u!95 &2397476297024986367
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8516886073319634894}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b45822c636944fa41922f87e55ed1326, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  thiefWalk:
+  - {fileID: -7661419856922177326, guid: b713e589c1c1d2f4fa9d7d547d4668e8, type: 3}
+  - {fileID: -5416108141533135630, guid: 857b7f1a066fe50468f50f201a2760bb, type: 3}
+  - {fileID: 8336586057233870521, guid: 101abae9a136bf542a43981eada8cd04, type: 3}
+  - {fileID: -2829206024438990158, guid: eaffd18d5927df94fb705fa00edc4067, type: 3}
+  - {fileID: 8817774016571752086, guid: 4ba0e2a322bb80f46aafa4b9eeeaa564, type: 3}
+  - {fileID: 8875151898643241270, guid: 285e4e392798d4f46ae3f7e5f2f2e7f5, type: 3}
+  - {fileID: 6367773683410614546, guid: c5b5d7bbada3331419ca826b1e394c2e, type: 3}
+  girlWalk:
+  - {fileID: -3766763800843893300, guid: beecf0df5524f114c93ba593174fdf3b, type: 3}
+  - {fileID: 7153922179001676480, guid: d412240ece3680848ae732cc2396855b, type: 3}
+  - {fileID: -2629777450718059302, guid: a4bb012f8ade3164a81eb4790b6b6a25, type: 3}
+  thugWalk:
+  - {fileID: -269558015489966912, guid: 82a248ebf6292c54dbd46ec13f0bd8db, type: 3}
+  - {fileID: -5293725373246974814, guid: 10ecbba320819ff4e94b38573e3c9b18, type: 3}
+  fps: 5

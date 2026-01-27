@@ -1,30 +1,53 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerDisguise : MonoBehaviour
+public class SpriteSwitcher : MonoBehaviour
 {
-    public Sprite sprThief;
-    public Sprite sprGirl;
-    public Sprite sprThug;
+    public Sprite[] thiefWalk;
+    public Sprite[] girlWalk;
+    public Sprite[] thugWalk;
+    public float fps = 5.0f;
 
-    private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    private float frameRate; // seconds per frame
 
-    void Awake()
+    private SpriteRenderer sr;
+    private Sprite[] currentAnimation;
+    private int currentFrame;
+    private float timer;
+
+    void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        frameRate = 1.0f / fps;
+        SetAnimation(thiefWalk); // default animation
     }
 
     void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-            animator.Play("Anim_Thief_Walk");
+        // Switch animations with keys
+        if (Keyboard.current.digit1Key.wasPressedThisFrame) SetAnimation(thiefWalk);
+        if (Keyboard.current.digit2Key.wasPressedThisFrame) SetAnimation(girlWalk);
+        if (Keyboard.current.digit3Key.wasPressedThisFrame) SetAnimation(thugWalk);
 
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            spriteRenderer.sprite = sprGirl;
+        // Update frame
+        if (currentAnimation == null || currentAnimation.Length == 0) return;
 
-        if (Keyboard.current.digit3Key.wasPressedThisFrame)
-            spriteRenderer.sprite = sprThug;
+        timer += Time.deltaTime;
+        if (timer >= frameRate)
+        {
+            timer = 0f;
+            currentFrame = (currentFrame + 1) % currentAnimation.Length;
+            sr.sprite = currentAnimation[currentFrame];
+        }
+    }
+
+    void SetAnimation(Sprite[] newAnimation)
+    {
+        if (newAnimation == currentAnimation) return;
+        currentAnimation = newAnimation;
+        currentFrame = 0;
+        timer = 0f;
+        if (currentAnimation.Length > 0)
+            sr.sprite = currentAnimation[0];
     }
 }
