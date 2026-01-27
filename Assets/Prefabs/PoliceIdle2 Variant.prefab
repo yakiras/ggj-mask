@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoliceIdle2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3002901161045053533, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: 'frames.Array.data[0]'
+      value: 
+      objectReference: {fileID: 618134562693981588, guid: 5d7dac48047f3404e821d98a6cfc4901, type: 3}
+    - target: {fileID: 3002901161045053533, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: 'frames.Array.data[1]'
+      value: 
+      objectReference: {fileID: -2129086810837898700, guid: 42f62efabab01ee4dbba3d2e35e0b5fe, type: 3}
     - target: {fileID: 4643231857022820197, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
       propertyPath: 'frames.Array.data[0]'
       value: 
@@ -68,6 +76,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 618134562693981588, guid: 5d7dac48047f3404e821d98a6cfc4901, type: 3}
+    - target: {fileID: 8801374152548968504, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801374152548968504, guid: 63d82e7819854bf4485dfde2d7329336, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -495711631
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
