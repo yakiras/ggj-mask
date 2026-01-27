@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuildingFade : MonoBehaviour
 {
     public GameStateManager gameStateManager;
+    public PlayerDisguise playerController;
     public SpriteRenderer topSprite;   // assign the top sprite
     public float fadeSpeed = 2f;       // how fast it fades
     public bool isJewelryShop = false;
@@ -35,9 +36,22 @@ public class BuildingFade : MonoBehaviour
             if (isJewelryShop)
             {
                 if (gameStateManager.hasKey)
+                {
                     playerNear = true;
+                }
             }
             else { playerNear = true; }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!isJewelryShop) return;
+
+        if (playerController.currentDisguise == "thief")
+        {
+            gameStateManager.money += 100;
+            // play stealing animation
         }
     }
 

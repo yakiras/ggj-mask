@@ -107,4 +107,4 @@ MonoBehaviour:
   frames:
   - {fileID: 3329693933963081765, guid: ab1cdda79d7c45243b7ade022be3c1a1, type: 3}
   - {fileID: 1112364946750021758, guid: 0ce6cd8ee76e763489b6f5a86037bc53, type: 3}
-  frameRate: 0.5
+  frameRate: 1
