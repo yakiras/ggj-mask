@@ -10,6 +10,7 @@ public class Bar : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("hit trigger");
         if (other.CompareTag("Player"))
         {
             if (!secondRound) CheckDisguiseR1();
@@ -22,12 +23,15 @@ public class Bar : MonoBehaviour
         {
             case "thief":
                 thief = true;
+                // beat up by thugs - ENDING
                 break;
             case "girl":
                 girl = true;
+                // stalked by thug, thug beats up police
                 break;
             case "thug":
                 thug = true;
+                StartCoroutine(playerController.SetThugDrinking());
                 break;
         }
         secondRound = true;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,9 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] thiefWalk;
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
+
+    public Sprite[] thugDrink;
+
     public float fps = 5.0f;
     public bool inputEnabled = true;
 
@@ -67,5 +71,13 @@ public class PlayerDisguise : MonoBehaviour
         timer = 0f;
         if (currentAnimation.Length > 0)
             sr.sprite = currentAnimation[0];
+    }
+
+    public IEnumerator SetThugDrinking()
+    {
+        inputEnabled = false;
+        currentAnimation = thugDrink;
+        yield return new WaitForSeconds(3.0f);
+        inputEnabled = true;
     }
 }
