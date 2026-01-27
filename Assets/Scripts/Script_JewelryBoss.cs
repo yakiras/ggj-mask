@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JewelryShop : MonoBehaviour
+public class JewelryBoss : MonoBehaviour
 {
     public PlayerDisguise playerController;
     public GameStateManager gameStateManager;

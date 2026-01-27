@@ -47,8 +47,14 @@ TagManager:
   - name: Foreground
     uniqueID: 3322618051
     locked: 0
+  - name: NPC(inside)
+    uniqueID: 1533519393
+    locked: 0
   - name: Building
     uniqueID: 1782605747
+    locked: 0
+  - name: NPC(outside)
+    uniqueID: 3799255665
     locked: 0
   - name: Player
     uniqueID: 27488291
