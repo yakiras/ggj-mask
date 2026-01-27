@@ -1,11 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class GameStateManager : MonoBehaviour
 {
     public GameObject mainMenuGroup;
     public GameObject tutorialGroup;
+    public int money = 0;
+    public string menuScene;
     public string gameScene;
+    public string endScene;
+
+    public Sprite ending1;
+
+    private SpriteRenderer sr;
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     public void StartTutorial()
     {
@@ -40,5 +52,25 @@ public class MenuController : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(gameScene);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(menuScene);
+        money = 0;
+    }
+
+    public void DisplayEnding(int endingNum)
+    {
+        switch (endingNum)
+        {
+            case 1:
+                // switch current ending
+                break;
+            case 2:
+                break;
+        }
+
+        SceneManager.LoadScene(endScene);
     }
 }

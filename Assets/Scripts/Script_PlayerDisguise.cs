@@ -9,8 +9,6 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
 
-    public Sprite[] thugDrink;
-
     public float fps = 5.0f;
     public bool inputEnabled = true;
 
@@ -73,11 +71,11 @@ public class PlayerDisguise : MonoBehaviour
             sr.sprite = currentAnimation[0];
     }
 
-    public IEnumerator SetThugDrinking()
+    public IEnumerator SetAnimationWithDelay(Sprite[] anim, float seconds)
     {
         inputEnabled = false;
-        currentAnimation = thugDrink;
-        yield return new WaitForSeconds(3.0f);
+        SetAnimation(anim);
+        yield return new WaitForSeconds(seconds);
         inputEnabled = true;
     }
 }

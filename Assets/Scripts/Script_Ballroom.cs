@@ -3,6 +3,8 @@ using UnityEngine;
 public class Ballroom : MonoBehaviour
 {
     public PlayerDisguise playerController;
+    public GameStateManager gameStateManager;
+
     public bool thief = false;
     public bool girl = false;
     public bool thug = false;
@@ -22,12 +24,16 @@ public class Ballroom : MonoBehaviour
         {
             case "thief":
                 thief = true;
+                // people shocked
+                gameStateManager.money += 10;
                 break;
             case "girl":
                 girl = true;
+                // do dance animation
                 break;
             case "thug":
                 thug = true;
+                // people run away
                 break;
         }
         secondRound = true;

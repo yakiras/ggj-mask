@@ -3,6 +3,8 @@ using UnityEngine;
 public class PoliceStation : MonoBehaviour
 {
     public PlayerDisguise playerController;
+    public GameStateManager gameStateManager;
+
     public bool thief = false;
     public bool girl = false;
     public bool thug = false;

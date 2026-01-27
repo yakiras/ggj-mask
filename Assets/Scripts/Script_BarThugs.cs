@@ -1,8 +1,12 @@
 using UnityEngine;
 
-public class Bar : MonoBehaviour
+public class BarThug : MonoBehaviour
 {
     public PlayerDisguise playerController;
+    public GameStateManager gameStateManager;
+
+    public Sprite[] thugDrink;
+
     public bool thief = false;
     public bool girl = false;
     public bool thug = false;
@@ -22,8 +26,8 @@ public class Bar : MonoBehaviour
         switch (playerController.currentDisguise)
         {
             case "thief":
-                thief = true;
-                // beat up by thugs - ENDING
+                // ENDING 1: get beat up by thug
+                gameStateManager.DisplayEnding(1);
                 break;
             case "girl":
                 girl = true;
@@ -31,7 +35,7 @@ public class Bar : MonoBehaviour
                 break;
             case "thug":
                 thug = true;
-                StartCoroutine(playerController.SetThugDrinking());
+                StartCoroutine(playerController.SetAnimationWithDelay(thugDrink, 3.0f));
                 break;
         }
         secondRound = true;
