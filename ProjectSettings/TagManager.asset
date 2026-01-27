@@ -47,6 +47,9 @@ TagManager:
   - name: Foreground
     uniqueID: 3322618051
     locked: 0
+  - name: Building
+    uniqueID: 1782605747
+    locked: 0
   - name: Player
     uniqueID: 27488291
     locked: 0
