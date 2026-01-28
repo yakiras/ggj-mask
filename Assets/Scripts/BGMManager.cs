@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    public GameObject BGMHandler;
     public AudioClip bgmNormal;
     public AudioClip bgmHappy;
     public AudioClip bgmSad;
 
     private AudioSource source;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public IEnumerator SwitchBGM(string type)
     {

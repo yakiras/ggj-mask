@@ -1611,10 +1611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f61bf1f90cc70c43b49df52654f7cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script_BGMManager
-  BGMHandler: {fileID: 0}
-  bgmNormal: {fileID: 0}
-  bgmHappy: {fileID: 0}
-  bgmSad: {fileID: 0}
+  bgmNormal: {fileID: 8300000, guid: ecabc264f3c4cff4d994680db8d91ab6, type: 3}
+  bgmHappy: {fileID: 8300000, guid: a9d05bb03f797804fb649b633dbafa90, type: 3}
+  bgmSad: {fileID: 8300000, guid: 10ba30718b297164c83e9ae147255ae6, type: 3}
 --- !u!1001 &1884967848203142261
 PrefabInstance:
   m_ObjectHideFlags: 0
