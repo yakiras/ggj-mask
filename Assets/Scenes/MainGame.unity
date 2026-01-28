@@ -1450,7 +1450,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   lookAheadDistance: 3
   leftLimit: 0
-  rightLimit: 60
+  rightLimit: 140
 --- !u!1 &542104422
 GameObject:
   m_ObjectHideFlags: 0
