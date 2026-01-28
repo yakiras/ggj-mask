@@ -62,4 +62,16 @@ public class GameStateManager : MonoBehaviour
         
         SceneManager.LoadScene(endScene);
     }
+
+    public void ResetGame()
+    {
+        money = 0;
+        hasKey = false;
+        shopRobbed = false;
+        secondTrip = false;
+        stopMoving = false;
+        atBankers = false;
+
+        currentEnding = 0;
+    }
 }
