@@ -1,37 +1,70 @@
+using System.Collections;
 using UnityEngine;
 
 public class Ballroom : MonoBehaviour
 {
     public PlayerDisguise playerController;
+    public Sprite[] animationFrames;
+    public Transform people;
+    private float frameRate;
 
-    public bool thief = false;
-    public bool girl = false;
-    public bool thug = false;
+    private void Start()
+    {
+        frameRate = 0.5f;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            CheckDisguiseR1();
+            CheckDisguise();
         }
     }
-    void CheckDisguiseR1()
+    void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
             case "thief":
-                thief = true;
-                // people shocked
+                AnimateChildrenWithRandomOffsets();
                 GameStateManager.Instance.money += 10;
                 break;
             case "girl":
-                girl = true;
                 // do dance animation
                 break;
             case "thug":
-                thug = true;
-                // people run away
+                AnimateChildrenWithRandomOffsets();
                 break;
+        }
+    }
+
+    public void AnimateChildrenWithRandomOffsets()
+    {
+        foreach (Transform child in people)
+        {
+            SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                StartCoroutine(AnimateChild(sr));
+            }
+        }
+    }
+
+    IEnumerator AnimateChild(SpriteRenderer sr)
+    {
+        int frame = Random.Range(0, animationFrames.Length);
+        float timer = Random.Range(0f, frameRate);
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= frameRate)
+            {
+                timer = 0f;
+                frame = (frame + 1) % animationFrames.Length;
+                sr.sprite = animationFrames[frame];
+            }
+
+            yield return null;
         }
     }
 
