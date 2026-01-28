@@ -9,11 +9,11 @@ public class BarThug : MonoBehaviour
     public Sprite[] playerDrink;
     public Sprite[] thugIdle;
     public Sprite[] thugHearts;
+    public Sprite[] thugFight;
 
     public bool thief = false;
     public bool girl = false;
     public bool thug = false;
-    private bool secondRound = false;
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
@@ -47,8 +47,7 @@ public class BarThug : MonoBehaviour
         Debug.Log("Enter hit trigger");
         if (other.CompareTag("Player"))
         {
-            if (!secondRound) CheckDisguiseR1();
-            else CheckDisguiseR2();
+            CheckDisguiseR1();
         }
     }
 
@@ -58,7 +57,9 @@ public class BarThug : MonoBehaviour
         {
             case "thief":
                 // ENDING 1: get beat up by thug
-                gameStateManager.DisplayEnding(1);
+                playerController.SetAnimation(thugFight);
+                StartCoroutine(gameStateManager.DisplayEnding(1));
+                gameObject.SetActive(false);
                 break;
             case "girl":
                 girl = true;
@@ -68,23 +69,6 @@ public class BarThug : MonoBehaviour
             case "thug":
                 thug = true;
                 StartCoroutine(playerController.SetAnimationWithDelay(playerDrink, 3.0f));
-                break;
-        }
-        secondRound = true;
-    }
-
-    void CheckDisguiseR2()
-    {
-        switch (playerController.currentDisguise)
-        {
-            case "thief":
-                thief = true;
-                break;
-            case "girl":
-                girl = true;
-                break;
-            case "thug":
-                thug = true;
                 break;
         }
     }

@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BuildingFade : MonoBehaviour
@@ -7,8 +8,11 @@ public class BuildingFade : MonoBehaviour
     public SpriteRenderer topSprite;   // assign the top sprite
     public float fadeSpeed = 2f;       // how fast it fades
     public bool isJewelryShop = false;
+    public bool isBallroom = false;
 
     private bool playerNear = false;
+    private bool ballroomLocked = false;
+    private bool isStealing = false;
 
     void Update()
     {
@@ -41,6 +45,10 @@ public class BuildingFade : MonoBehaviour
                     playerNear = true;
                 }
             }
+            else if (isBallroom)
+            {
+                if (!ballroomLocked) playerNear = true;
+            }
             else { playerNear = true; }
         }
     }
@@ -49,11 +57,15 @@ public class BuildingFade : MonoBehaviour
     {
         if (!isJewelryShop) return;
 
-        if (playerController.currentDisguise == "thief")
+        if (playerController.currentDisguise == "thief" &&
+            gameStateManager.hasKey &&
+            !gameStateManager.shopRobbed &&
+            !isStealing)
         {
             gameStateManager.shopRobbed = true;
+            isStealing = true;
             gameStateManager.money += 100;
-            // play stealing animation
+            playerController.StartStealing();
         }
     }
 
@@ -62,6 +74,14 @@ public class BuildingFade : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNear = false;
+
+            if (isStealing)
+            {
+                isStealing = false;
+                playerController.StopStealing();
+            }
+
+            if (isBallroom) ballroomLocked = true;
         }
     }
 }

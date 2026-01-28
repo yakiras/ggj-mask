@@ -27,6 +27,11 @@ public class SleepingPolice : MonoBehaviour
         StartCoroutine(WaitBeforeCheck());
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CheckDisguise();
+    }
+
     void Update()
     {
         // Update frame
@@ -44,7 +49,7 @@ public class SleepingPolice : MonoBehaviour
     IEnumerator WaitBeforeCheck()
     {
         SetAnimation(wake);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         CheckDisguise();
     }
 
@@ -54,12 +59,16 @@ public class SleepingPolice : MonoBehaviour
         {
             case "thief":
                 // ENDING 2: prison
+                SetAnimation(wake);
                 gameStateManager.DisplayEnding(2);
                 break;
             case "girl":
                 SetAnimation(hearts);
                 break;
             case "thug":
+                // ENDING 2: prison
+                SetAnimation(wake);
+                gameStateManager.DisplayEnding(2);
                 break;
         }
     }

@@ -533,8 +533,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268722779}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 1268722781}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1032,7 +1032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268722780}
-  - component: {fileID: 1268722779}
+  - component: {fileID: 1268722781}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -1040,27 +1040,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1268722779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268722778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056e88fbe4688a74aa98cb9f8fc4e3d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  mainMenuGroup: {fileID: 1221973371}
-  tutorialGroup: {fileID: 1026440162}
-  BGMHandler: {fileID: 0}
-  money: 0
-  hasKey: 0
-  menuScene: 
-  gameScene: MainGame
-  endScene: 
-  ending1: {fileID: 0}
 --- !u!4 &1268722780
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,6 +1055,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268722781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268722778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a3f0c801e1b3046861a7edb542afc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  mainMenuGroup: {fileID: 1221973371}
+  tutorialGroup: {fileID: 1026440162}
+  BGMHandler: {fileID: 1676451075}
+  menuScene: MainMenu
+  gameScene: MainGame
+  endScene: Ending
 --- !u!1 &1428084802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,8 +1156,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268722779}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+      - m_Target: {fileID: 1268722781}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: StartTutorial
         m_Mode: 1
         m_Arguments:
@@ -1270,6 +1267,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+--- !u!1 &1676451075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6137987926421561312, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+  m_PrefabInstance: {fileID: 1676451074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1753210182
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] thiefWalk;
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
+    public Sprite[] stealing;
 
     public float fps = 5.0f;
     public bool inputEnabled = true;
@@ -61,7 +62,7 @@ public class PlayerDisguise : MonoBehaviour
         }
     }
 
-    void SetAnimation(Sprite[] newAnimation)
+    public void SetAnimation(Sprite[] newAnimation)
     {
         if (newAnimation == currentAnimation) return;
         currentAnimation = newAnimation;
@@ -77,5 +78,17 @@ public class PlayerDisguise : MonoBehaviour
         SetAnimation(anim);
         yield return new WaitForSeconds(seconds);
         inputEnabled = true;
+    }
+
+    public void StartStealing()
+    {
+        inputEnabled = false;
+        SetAnimation(stealing);
+    }
+
+    public void StopStealing()
+    {
+        inputEnabled = true;
+        SetAnimation(thiefWalk);
     }
 }

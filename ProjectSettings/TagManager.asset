@@ -50,6 +50,9 @@ TagManager:
   - name: NPC(inside)
     uniqueID: 1533519393
     locked: 0
+  - name: Cage
+    uniqueID: 3273800711
+    locked: 0
   - name: Building
     uniqueID: 1782605747
     locked: 0
