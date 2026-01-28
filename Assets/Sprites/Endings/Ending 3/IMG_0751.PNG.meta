@@ -106,12 +106,12 @@ TextureImporter:
       name: IMG_0751_0
       rect:
         serializedVersion: 2
-        x: 482
-        y: 0
-        width: 1942
-        height: 1440
+        x: 506
+        y: 187
+        width: 1595
+        height: 870
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -133,7 +133,7 @@ TextureImporter:
         width: 6
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e3f5f9a617d86c04681bbd46f8145e2b
     internalID: 0
     vertices: []
     indices: 

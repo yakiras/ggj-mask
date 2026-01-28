@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Ending : MonoBehaviour
@@ -13,12 +14,17 @@ public class Ending : MonoBehaviour
     public Sprite[] ending3; // fucking dead
     public Sprite[] ending4; // rich
 
+    public string menuScene;
+    public string gameScene;
+    public string endScene;
+
     private float frameRate; // seconds per frame
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
+    private bool playOnce;
 
     private int ending;
 
@@ -27,7 +33,9 @@ public class Ending : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         frameRate = 1.0f / fps;
         canvas.enabled = false;
-        ending = 1;
+        playOnce = false;
+
+        ending = 3;
 
         //switch (GameStateManager.Instance.currentEnding)
         switch (ending)
@@ -42,8 +50,9 @@ public class Ending : MonoBehaviour
                 SetAnimation(ending2);
                 break;
             case 3:
-                currentAnimation = ending3;
-                PlayAnimationOnce(ending3OP);
+                playOnce = true;
+                frameRate = 1.0f / 7.0f;
+                SetAnimation(ending3OP);
                 break;
             case 4:
                 SetAnimation(ending4);
@@ -63,7 +72,28 @@ public class Ending : MonoBehaviour
         if (timer >= frameRate)
         {
             timer = 0f;
-            currentFrame = (currentFrame + 1) % currentAnimation.Length;
+
+            // PLAY ONCE MODE - only for ending 3 opening
+            if (playOnce)
+            {
+                currentFrame++;
+
+                if (currentFrame >= currentAnimation.Length)
+                {
+                    // switch animation
+                    frameRate = 1.0f / fps;
+                    currentAnimation = ending3;
+                    currentFrame = 0;
+                    playOnce = false;
+                    return;
+                }
+            }
+            else
+            {
+                // LOOP MODE
+                currentFrame = (currentFrame + 1) % currentAnimation.Length;
+            }
+
             sr.sprite = currentAnimation[currentFrame];
         }
     }
@@ -75,30 +105,45 @@ public class Ending : MonoBehaviour
         currentFrame = 0;
         timer = 0f;
         if (currentAnimation.Length > 0)
-            sr.sprite = currentAnimation[0];
-    }
-
-    public void PlayAnimationOnce(Sprite[] anim)
-    {
-        StartCoroutine(PlayOnceCoroutine(anim));
-    }
-
-    private IEnumerator PlayOnceCoroutine(Sprite[] anim)
-    {
-        if (anim == null || anim.Length == 0) yield break;
-
-        for (int i = 0; i < anim.Length; i++)
         {
-            sr.sprite = anim[i];
-            yield return new WaitForSeconds(frameRate);
+            sr.sprite = currentAnimation[0];
         }
-
-        SetAnimation(currentAnimation);
     }
+
+    //private IEnumerator PlayAnimationOnce(Sprite[] anim)
+    //{
+    //    yield return StartCoroutine(PlayOnceCoroutine(anim));
+    //    SetAnimation(currentAnimation);
+    //}
+
+    //private IEnumerator PlayOnceCoroutine(Sprite[] anim)
+    //{
+    //    if (anim == null || anim.Length == 0) yield break;
+
+    //    frameRate = 1f / 7f;
+    //    for (int i = 0; i < anim.Length; i++)
+    //    {
+    //        sr.sprite = anim[i];
+    //        yield return new WaitForSeconds(frameRate);
+    //    }
+    //    frameRate = 1f / 3f;
+    //}
 
     IEnumerator WaitAndDisplayUI()
     {
         yield return new WaitForSeconds(3f);
         canvas.enabled = true;
+    }
+
+    public void Retry()
+    {
+        GameStateManager.Instance.ResetGame();
+        SceneManager.LoadScene(gameScene);
+    }
+
+    public void Quit()
+    {
+        GameStateManager.Instance.ResetGame();
+        SceneManager.LoadScene(menuScene);
     }
 }

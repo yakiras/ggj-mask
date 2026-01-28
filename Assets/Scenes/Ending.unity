@@ -327,6 +327,9 @@ MonoBehaviour:
   - {fileID: 6258885814743432056, guid: 909a9dcbd9d21bc4db2b9aa7b695086e, type: 3}
   - {fileID: -29428214990291271, guid: 06697cf8323df4642861692d26418204, type: 3}
   - {fileID: -6819171481888569562, guid: 9905fd9e64b9cc94aa3a5bbffcff7999, type: 3}
+  menuScene: MainMenu
+  gameScene: MainGame
+  endScene: Ending
 --- !u!4 &83731772
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +340,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -370,14 +373,14 @@ RectTransform:
   m_GameObject: {fileID: 418119293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 3.5, z: 1}
+  m_LocalScale: {x: 2, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2084720441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 754, y: 161}
+  m_AnchoredPosition: {x: 790, y: 188}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418119295
@@ -424,9 +427,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 83731771}
+        m_TargetAssemblyTypeName: Ending, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -502,14 +505,14 @@ RectTransform:
   m_GameObject: {fileID: 674448680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 4, z: 1}
+  m_LocalScale: {x: 1.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2084720441}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -754, y: 228}
+  m_AnchoredPosition: {x: -790, y: 188}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674448682
@@ -556,9 +559,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 83731771}
+        m_TargetAssemblyTypeName: Ending, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
