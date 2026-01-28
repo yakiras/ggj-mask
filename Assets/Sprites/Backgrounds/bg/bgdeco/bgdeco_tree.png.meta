@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 354602563461de6429a41a62836b586b
+guid: e9860c6fdc03fd542ab75238c4eba672
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2831186415770096285
-    second: jewelrystore_outside_0
+      213: 493592159144978191
+    second: bgdeco_tree_0
+  - first:
+      213: -8701484884572831666
+    second: bgdeco_tree_1
+  - first:
+      213: -1597320988890794070
+    second: bgdeco_tree_2
+  - first:
+      213: 2194359747471941774
+    second: bgdeco_tree_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jewelrystore_outside_0
+      name: bgdeco_tree_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1297
-        height: 934
+        width: 730
+        height: 853
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9253ec7b056a4720800000000000000
-      internalID: 2831186415770096285
+      spriteID: f0721cd147799d600800000000000000
+      internalID: 493592159144978191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdeco_tree_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 833
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e400b94999d1e3780800000000000000
+      internalID: -8701484884572831666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdeco_tree_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 844
+        width: 83
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa773e8060d25d9e0800000000000000
+      internalID: -1597320988890794070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bgdeco_tree_3
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 845
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e802b79609ee37e10800000000000000
+      internalID: 2194359747471941774
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a0fda505239c72418807cee3e23b4a5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jewelrystore_outside_0: 2831186415770096285
+      bgdeco_tree_0: 493592159144978191
+      bgdeco_tree_1: -8701484884572831666
+      bgdeco_tree_2: -1597320988890794070
+      bgdeco_tree_3: 2194359747471941774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

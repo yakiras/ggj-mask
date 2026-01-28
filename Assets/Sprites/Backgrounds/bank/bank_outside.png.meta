@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 354602563461de6429a41a62836b586b
+guid: 3344652737f1f964b934c3a8007cf1a1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2831186415770096285
-    second: jewelrystore_outside_0
+      213: 3831630359085783111
+    second: bank_outside_0
+  - first:
+      213: 2255739549736167312
+    second: bank_outside_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jewelrystore_outside_0
+      name: bank_outside_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1297
-        height: 934
+        width: 1435
+        height: 969
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9253ec7b056a4720800000000000000
-      internalID: 2831186415770096285
+      spriteID: 74819efb28fac2530800000000000000
+      internalID: 3831630359085783111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bank_outside_1
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 0
+        width: 272
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097e2d74b2ffd4f10800000000000000
+      internalID: 2255739549736167312
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a0fda505239c72418807cee3e23b4a5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jewelrystore_outside_0: 2831186415770096285
+      bank_outside_0: 3831630359085783111
+      bank_outside_1: 2255739549736167312
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

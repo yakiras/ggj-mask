@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 354602563461de6429a41a62836b586b
+guid: 195499109b86c5e448d56a5fb59a6f68
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2831186415770096285
-    second: jewelrystore_outside_0
+      213: 8990768180420358124
+    second: bgdeco_fountain_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jewelrystore_outside_0
+      name: bgdeco_fountain_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1297
-        height: 934
+        width: 445
+        height: 517
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9253ec7b056a4720800000000000000
-      internalID: 2831186415770096285
+      spriteID: cef27d36600a5cc70800000000000000
+      internalID: 8990768180420358124
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a0fda505239c72418807cee3e23b4a5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jewelrystore_outside_0: 2831186415770096285
+      bgdeco_fountain_0: 8990768180420358124
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
