@@ -49,6 +49,25 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Switched to Main Menu");
     }
 
+    public void StartCredits()
+    {
+        if (mainMenuGroup != null)
+        {
+            mainMenuGroup.SetActive(false);
+        }
+        if (tutorialGroup != null)
+        {
+            tutorialGroup.SetActive(false);
+        }
+
+        if (creditsGroup != null)
+        {
+            creditsGroup.SetActive(true);
+        }
+
+        Debug.Log("Switched to Credits");
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(gameScene);

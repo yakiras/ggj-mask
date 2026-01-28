@@ -26,7 +26,7 @@ public class Ending : MonoBehaviour
     private float timer;
     private bool playOnce;
 
-    private int ending;
+    //private int ending;
 
     void Start()
     {
@@ -35,10 +35,10 @@ public class Ending : MonoBehaviour
         canvas.enabled = false;
         playOnce = false;
 
-        ending = 3;
+        //ending = 3;
 
-        //switch (GameStateManager.Instance.currentEnding)
-        switch (ending)
+        switch (GameStateManager.Instance.currentEnding)
+        //switch (ending)
         {
             case 0:
                 SetAnimation(ending0);
@@ -109,25 +109,6 @@ public class Ending : MonoBehaviour
             sr.sprite = currentAnimation[0];
         }
     }
-
-    //private IEnumerator PlayAnimationOnce(Sprite[] anim)
-    //{
-    //    yield return StartCoroutine(PlayOnceCoroutine(anim));
-    //    SetAnimation(currentAnimation);
-    //}
-
-    //private IEnumerator PlayOnceCoroutine(Sprite[] anim)
-    //{
-    //    if (anim == null || anim.Length == 0) yield break;
-
-    //    frameRate = 1f / 7f;
-    //    for (int i = 0; i < anim.Length; i++)
-    //    {
-    //        sr.sprite = anim[i];
-    //        yield return new WaitForSeconds(frameRate);
-    //    }
-    //    frameRate = 1f / 3f;
-    //}
 
     IEnumerator WaitAndDisplayUI()
     {
