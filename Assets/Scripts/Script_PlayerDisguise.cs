@@ -26,33 +26,36 @@ public class PlayerDisguise : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         frameRate = 1.0f / fps;
         currentDisguise = "thief";
-        SetAnimation(thiefWalk); // default animation
+        DefaultAnimation(); // default animation
     }
 
     void Update()
     {
         if (GameStateManager.Instance.stopMoving)
         {
-            SetAnimation(idle);
+            if (GameStateManager.Instance.atBankers)
+                SetAnimation(idle);
         }
-
-        // Switch animations with keys
-        if (inputEnabled)
+        else
         {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            // Switch animations with keys
+            if (inputEnabled)
             {
-                currentDisguise = "thief";
-                SetAnimation(thiefWalk);
-            }
-            if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            {
-                currentDisguise = "girl";
-                SetAnimation(girlWalk);
-            }
-            if (Keyboard.current.digit3Key.wasPressedThisFrame)
-            {
-                currentDisguise = "thug";
-                SetAnimation(thugWalk);
+                if (Keyboard.current.digit1Key.wasPressedThisFrame)
+                {
+                    currentDisguise = "thief";
+                    SetAnimation(thiefWalk);
+                }
+                if (Keyboard.current.digit2Key.wasPressedThisFrame)
+                {
+                    currentDisguise = "girl";
+                    SetAnimation(girlWalk);
+                }
+                if (Keyboard.current.digit3Key.wasPressedThisFrame)
+                {
+                    currentDisguise = "thug";
+                    SetAnimation(thugWalk);
+                }
             }
         }
 
@@ -96,5 +99,18 @@ public class PlayerDisguise : MonoBehaviour
     {
         inputEnabled = true;
         SetAnimation(thiefWalk);
+    }
+
+    public void DefaultAnimation()
+    {
+        SetAnimation(thiefWalk);
+    }
+
+    public void FlipSprite()
+    {
+        // Flips the character visually
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 }

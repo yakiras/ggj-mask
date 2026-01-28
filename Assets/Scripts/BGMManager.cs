@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
+    public float fadeSpeed = 1.0f;
+
     public AudioClip bgmNormal;
     public AudioClip bgmHappy;
     public AudioClip bgmSad;
@@ -16,8 +18,8 @@ public class BGMManager : MonoBehaviour
 
     public IEnumerator SwitchBGM(string type)
     {
-        yield return StopBGM();
-        StartBGM(type);
+        yield return StartCoroutine(StopBGM());
+        yield return StartCoroutine(StartBGM(type));
     }
 
     public IEnumerator StopBGM()
@@ -27,7 +29,7 @@ public class BGMManager : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime / 1.0f;
+            t += Time.deltaTime / fadeSpeed;
             source.volume = Mathf.Lerp(startVolume, 0f, t);
             yield return null;
         }
@@ -55,7 +57,7 @@ public class BGMManager : MonoBehaviour
         float t = 0f;
         while (t < 1f)
         {
-            t += Time.deltaTime / 1.0f;
+            t += Time.deltaTime / fadeSpeed;
             source.volume = Mathf.Lerp(0f, 0.5f, t);
             yield return null;
         }

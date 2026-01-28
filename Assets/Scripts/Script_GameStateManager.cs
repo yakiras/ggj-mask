@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour
     public string endScene;
     public bool secondTrip = false;
     public bool stopMoving = false;
+    public bool atBankers = false;
 
     public int currentEnding = 0;
 

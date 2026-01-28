@@ -32,12 +32,7 @@ public class AutoWalker : MonoBehaviour
 
     void CheckBoundaries()
     {
-        // Flip direction if boundary is hit
-        if (transform.position.x >= rightBoundary && !GameStateManager.Instance.secondTrip)
-        {
-            FlipSprite();
-        }
-        else if (transform.position.x <= leftBoundary && GameStateManager.Instance.secondTrip)
+        if (transform.position.x <= leftBoundary && GameStateManager.Instance.secondTrip)
         {
             // ENDING EVALUATION
             if (GameStateManager.Instance.money < GameStateManager.Instance.moneyThreshold)
@@ -49,13 +44,5 @@ public class AutoWalker : MonoBehaviour
                 StartCoroutine(GameStateManager.Instance.DisplayEnding(4));
             }
         }
-    }
-
-    void FlipSprite()
-    {
-        // Flips the character visually
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
     }
 }

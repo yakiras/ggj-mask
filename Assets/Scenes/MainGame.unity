@@ -604,7 +604,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   lookAheadDistance: 3
   leftLimit: 0
-  rightLimit: 50
+  rightLimit: 60
 --- !u!1 &719921972
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +855,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.6975491, y: 0}
+  m_Offset: {x: -2.2323945, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -865,7 +865,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.2750983, y: 3.9}
+  m_Size: {x: 6.344789, y: 3.9}
   m_EdgeRadius: 0
 --- !u!212 &807660811
 SpriteRenderer:
@@ -938,11 +938,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a178ca5c3669c4595af8105b98c5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Banker
-  moneyThreshold: 100
   bgmManager: {fileID: 1273848318468365693}
-  idle: []
-  yes: []
-  no: []
+  player: {fileID: 1173816202}
+  idle:
+  - {fileID: -4602125457661078038, guid: 1ba1d30eb56043a49a88de2701c9b439, type: 3}
+  yes:
+  - {fileID: -6001009066017554441, guid: 091a190787a7f0849b342dccbcf9409b, type: 3}
+  - {fileID: -4602125457661078038, guid: 1ba1d30eb56043a49a88de2701c9b439, type: 3}
+  no:
+  - {fileID: 2147887523782852039, guid: 9191714036b5c7c47aaf735d476fbf08, type: 3}
+  - {fileID: -3924672108099163631, guid: 8e3b581b2871bcb4f98ff6a1ec4e1661, type: 3}
+  frameRate: 1
 --- !u!1 &1011098398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1153,7 @@ GameObject:
   - component: {fileID: 1440719960}
   - component: {fileID: 1440719959}
   - component: {fileID: 1440719961}
+  - component: {fileID: 1440719963}
   - component: {fileID: 1440719962}
   m_Layer: 0
   m_Name: Bank
@@ -1291,6 +1298,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bank
   boss: {fileID: 1653527585}
   station: {fileID: 3010038291146272011}
+--- !u!114 &1440719963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440719958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9374ee4ebd65fb5409d8f91ac7097ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingFade
+  playerController: {fileID: 1173816202}
+  topSprite: {fileID: 2084464845}
+  fadeSpeed: 2
+  isJewelryShop: 0
+  isBallroom: 0
 --- !u!1 &1451710777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,8 +2213,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3013900806911740515, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013900806911740515, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: rightBoundary
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5455937010159175138, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: m_LocalPosition.x

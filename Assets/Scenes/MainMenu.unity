@@ -703,16 +703,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056e88fbe4688a74aa98cb9f8fc4e3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
-  BGMHandler: {fileID: 1676451075}
-  bgmNormal: {fileID: 8300000, guid: ecabc264f3c4cff4d994680db8d91ab6, type: 3}
-  bgmHappy: {fileID: 8300000, guid: a9d05bb03f797804fb649b633dbafa90, type: 3}
-  bgmSad: {fileID: 8300000, guid: 10ba30718b297164c83e9ae147255ae6, type: 3}
   money: 0
+  moneyThreshold: 100
   hasKey: 0
   shopRobbed: 0
   menuScene: MainMenu
   gameScene: MainGame
   endScene: Ending
+  secondTrip: 0
+  stopMoving: 0
+  atBankers: 0
   currentEnding: 0
 --- !u!4 &1013606725
 Transform:
@@ -1124,7 +1124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   mainMenuGroup: {fileID: 1221973371}
   tutorialGroup: {fileID: 1026440162}
-  BGMHandler: {fileID: 1676451075}
   menuScene: MainMenu
   gameScene: MainGame
   endScene: Ending
@@ -1314,6 +1313,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6416133448382868222, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416133448382868222, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: a9d05bb03f797804fb649b633dbafa90, type: 3}
@@ -1322,11 +1325,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
---- !u!1 &1676451075 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6137987926421561312, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
-  m_PrefabInstance: {fileID: 1676451074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1753210182
 GameObject:
   m_ObjectHideFlags: 0
