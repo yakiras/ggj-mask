@@ -1,4 +1,3 @@
-using System.Data.SqlTypes;
 using UnityEngine;
 
 public class Bank : MonoBehaviour
@@ -24,6 +23,7 @@ public class Bank : MonoBehaviour
 
             boss.Flip();
             station.JailThug();
+            GameStateManager.Instance.secondTrip = true;
 
             if (!boss.thug)
             {

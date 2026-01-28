@@ -12,6 +12,7 @@ public class GameStateManager : MonoBehaviour
     public string menuScene;
     public string gameScene;
     public string endScene;
+    public bool secondTrip = false;
 
     public int currentEnding = 0;
 
@@ -53,9 +54,9 @@ public class GameStateManager : MonoBehaviour
     {
         currentEnding = endingNum;
         // stop player
-        yield return null;
         //yield return new WaitForSeconds(1.5f);
         
         SceneManager.LoadScene(endScene);
+        yield return null;
     }
 }

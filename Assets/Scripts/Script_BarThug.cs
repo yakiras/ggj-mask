@@ -52,8 +52,8 @@ public class BarThug : MonoBehaviour
             case "thief":
                 // ENDING 1: get beat up by thug
                 playerController.SetAnimation(thugFight);
+                sr.enabled = false;
                 StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
-                gameObject.SetActive(false);
                 break;
             case "girl":
                 SetAnimation(thugHearts);
