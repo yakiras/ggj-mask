@@ -4,6 +4,7 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Ending : MonoBehaviour
 {
+    public Canvas canvas;
     public float fps = 3.0f;
     public Sprite[] ending0; // alone & poor
     public Sprite[] ending1; // alone & prison
@@ -19,15 +20,17 @@ public class Ending : MonoBehaviour
     private int currentFrame;
     private float timer;
 
-    //private int ending = 1;
+    private int ending;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         frameRate = 1.0f / fps;
+        canvas.enabled = false;
+        ending = 1;
 
-        switch (GameStateManager.Instance.currentEnding)
-        //switch (ending)
+        //switch (GameStateManager.Instance.currentEnding)
+        switch (ending)
         {
             case 0:
                 SetAnimation(ending0);
@@ -48,6 +51,8 @@ public class Ending : MonoBehaviour
             default:
                 break;
         }
+
+        StartCoroutine(WaitAndDisplayUI());
     }
 
     void Update()
@@ -93,6 +98,7 @@ public class Ending : MonoBehaviour
 
     IEnumerator WaitAndDisplayUI()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
+        canvas.enabled = true;
     }
 }
