@@ -6,12 +6,13 @@ public class AutoWalker : MonoBehaviour
     public float rightBoundary = 20f; // Set this to the end of your level
     public float leftBoundary = 0f;    // Set this to the start of your level
 
-    private bool movingRight = true;
-
     void Update()
     {
-        Move();
-        CheckBoundaries();
+        if (!GameStateManager.Instance.stopMoving)
+        {
+            Move();
+            CheckBoundaries();
+        }
     }
 
     void Move()
@@ -19,7 +20,7 @@ public class AutoWalker : MonoBehaviour
         // Calculate movement
         float step = moveSpeed * Time.deltaTime;
 
-        if (movingRight)
+        if (!GameStateManager.Instance.secondTrip)
         {
             transform.Translate(Vector2.right * step);
         }
@@ -32,15 +33,21 @@ public class AutoWalker : MonoBehaviour
     void CheckBoundaries()
     {
         // Flip direction if boundary is hit
-        if (transform.position.x >= rightBoundary && movingRight)
+        if (transform.position.x >= rightBoundary && !GameStateManager.Instance.secondTrip)
         {
-            movingRight = false;
             FlipSprite();
         }
-        else if (transform.position.x <= leftBoundary && !movingRight)
+        else if (transform.position.x <= leftBoundary && GameStateManager.Instance.secondTrip)
         {
-            movingRight = true;
-            FlipSprite();
+            // ENDING EVALUATION
+            if (GameStateManager.Instance.money < GameStateManager.Instance.moneyThreshold)
+            {
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(0));
+            }
+            else
+            {
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(4));
+            }
         }
     }
 

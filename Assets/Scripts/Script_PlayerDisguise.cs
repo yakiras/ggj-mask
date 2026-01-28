@@ -8,6 +8,7 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] thiefWalk;
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
+    public Sprite[] idle;
     public Sprite[] stealing;
 
     public float fps = 5.0f;
@@ -30,6 +31,11 @@ public class PlayerDisguise : MonoBehaviour
 
     void Update()
     {
+        if (GameStateManager.Instance.stopMoving)
+        {
+            SetAnimation(idle);
+        }
+
         // Switch animations with keys
         if (inputEnabled)
         {

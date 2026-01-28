@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Bank : MonoBehaviour
 {
-    public int moneyThreshold = 100;
-    public BGMManager bgmManager;
     public JewelryBoss boss;
     public PoliceStation station;
 
@@ -11,19 +9,8 @@ public class Bank : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(GameStateManager.Instance.money);
-            if (GameStateManager.Instance.money < moneyThreshold)
-            {
-                StartCoroutine(bgmManager.SwitchBGM("sad"));
-            }
-            else
-            {
-                StartCoroutine(bgmManager.SwitchBGM("happy"));
-            }
-
             boss.Flip();
             station.JailThug();
-            GameStateManager.Instance.secondTrip = true;
 
             if (!boss.thug)
             {

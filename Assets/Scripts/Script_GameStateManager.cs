@@ -7,12 +7,14 @@ public class GameStateManager : MonoBehaviour
     public static GameStateManager Instance;
 
     public int money = 0;
+    public int moneyThreshold = 100;
     public bool hasKey = false;
     public bool shopRobbed = false;
     public string menuScene;
     public string gameScene;
     public string endScene;
     public bool secondTrip = false;
+    public bool stopMoving = false;
 
     public int currentEnding = 0;
 
@@ -54,9 +56,9 @@ public class GameStateManager : MonoBehaviour
     {
         currentEnding = endingNum;
         // stop player
-        //yield return new WaitForSeconds(1.5f);
+        stopMoving = true;
+        yield return new WaitForSeconds(1.5f);
         
         SceneManager.LoadScene(endScene);
-        yield return null;
     }
 }
