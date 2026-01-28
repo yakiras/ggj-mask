@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a317ed1f0e96a174eb477e5aaa087ecd
+guid: 75aeab33de625de48bf4bceeb64d2b38
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7844290688103946443
-    second: ui_back_0
-  - first:
-      213: 2832200098165293003
-    second: ui_back_1
+      213: 1385965225408222648
+    second: IMG_0773_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_back_0
+      name: IMG_0773_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 202
-        height: 236
+        width: 1920
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc8175be1d48cdc60800000000000000
-      internalID: 7844290688103946443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_back_1
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 0
-        width: 161
-        height: 72
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bcff7ffcbfefd4720800000000000000
-      internalID: 2832200098165293003
+      spriteID: 8b550838700fb3310800000000000000
+      internalID: 1385965225408222648
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9728ade27e8f49c4e8b833071f713701
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ui_back_0: 7844290688103946443
-      ui_back_1: 2832200098165293003
+      IMG_0773_0: 1385965225408222648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
