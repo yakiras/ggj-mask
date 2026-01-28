@@ -12,6 +12,7 @@ public class GameStateManager : MonoBehaviour
     public string menuScene;
     public string gameScene;
     public string endScene;
+    public bool secondTrip = false;
 
     public int currentEnding = 0;
 

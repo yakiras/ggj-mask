@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f01499823328f841920167a937046b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ending
-  fps: 5
+  fps: 3
   ending0:
   - {fileID: 3251159278583908356, guid: 553de62a6e6d7f54fa67f2b9ac171b2a, type: 3}
   - {fileID: 378622975672203362, guid: 4fae69698163d3140978a8d594793971, type: 3}

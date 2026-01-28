@@ -15,7 +15,6 @@ public class JewelryBoss : MonoBehaviour
     public bool thief = false;
     public bool girl = false;
     public bool thug = false;
-    private bool secondRound = false;
     private float frameRate = 0.5f; // seconds per frame
 
     private SpriteRenderer sr;
@@ -57,7 +56,7 @@ public class JewelryBoss : MonoBehaviour
                 sr.flipX = true;
             else sr.flipX = false;
 
-            if (!secondRound) CheckDisguiseR1();
+            if (!GameStateManager.Instance.secondTrip) CheckDisguiseR1();
             else CheckDisguiseR2();
         }
     }
@@ -80,7 +79,6 @@ public class JewelryBoss : MonoBehaviour
                 GameStateManager.Instance.hasKey = true;
                 break;
         }
-        secondRound = true;
     }
 
     void CheckDisguiseR2()
