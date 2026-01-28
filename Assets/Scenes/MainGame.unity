@@ -1505,8 +1505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056e88fbe4688a74aa98cb9f8fc4e3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
-  mainMenuGroup: {fileID: 0}
-  tutorialGroup: {fileID: 0}
   BGMHandler: {fileID: 0}
   bgmNormal: {fileID: 0}
   bgmHappy: {fileID: 0}
@@ -1517,7 +1515,7 @@ MonoBehaviour:
   menuScene: 
   gameScene: 
   endScene: 
-  ending1: {fileID: 0}
+  currentEnding: 0
 --- !u!82 &1941476874
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1754,6 +1752,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1202042510895305317, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
+      propertyPath: m_Size.x
+      value: 4.70496
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202042510895305317, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.250414
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781285228141233129, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2356819879438916037, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: gameStateManager
       value: 
@@ -1808,7 +1818,7 @@ PrefabInstance:
       objectReference: {fileID: 1173816202}
     - target: {fileID: 7429698840904170177, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.33
+      value: 47.43
       objectReference: {fileID: 0}
     - target: {fileID: 7429698840904170177, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1901,7 +1911,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3209752442213192509, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6
+      value: -0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209752442213192509, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.84
       objectReference: {fileID: 0}
     - target: {fileID: 3531754594406411382, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: gameStateManager
@@ -1986,7 +2000,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5688456340204025917, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.99
+      value: 17.43
       objectReference: {fileID: 0}
     - target: {fileID: 5688456340204025917, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2024,6 +2038,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5689632637240592275, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
+      propertyPath: m_Size.x
+      value: 4.652406
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689632637240592275, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
+      propertyPath: m_Offset.x
+      value: -2.3045695
+      objectReference: {fileID: 0}
     - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: gameStateManager
       value: 
@@ -2032,18 +2054,6 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1173816202}
-    - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
-      propertyPath: thugFight.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
-      propertyPath: 'thugFight.Array.data[0]'
-      value: 
-      objectReference: {fileID: -102763767433200972, guid: eab4bda3149712d4f8117d2005253c59, type: 3}
-    - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
-      propertyPath: 'thugFight.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2058498902905776422, guid: 9397c7d34b25bb24b93d0739e966e0b3, type: 3}
     - target: {fileID: 8720148231054945027, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: m_Name
       value: BarThug

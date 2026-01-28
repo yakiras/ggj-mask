@@ -11,10 +11,6 @@ public class BarThug : MonoBehaviour
     public Sprite[] thugHearts;
     public Sprite[] thugFight;
 
-    public bool thief = false;
-    public bool girl = false;
-    public bool thug = false;
-
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
     private float frameRate; // seconds per frame
@@ -42,16 +38,15 @@ public class BarThug : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Enter hit trigger");
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            CheckDisguiseR1();
+            CheckDisguise();
         }
     }
 
-    void CheckDisguiseR1()
+    void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
@@ -62,12 +57,12 @@ public class BarThug : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
             case "girl":
-                girl = true;
-                Debug.Log("hearts");
                 SetAnimation(thugHearts);
+                if (playerController.transform.position.x > transform.position.x)
+                    sr.flipX = true;
+                else sr.flipX = false;
                 break;
             case "thug":
-                thug = true;
                 StartCoroutine(playerController.SetAnimationWithDelay(playerDrink, 3.0f));
                 break;
         }

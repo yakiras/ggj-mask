@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    public GameObject mainMenuGroup;
-    public GameObject tutorialGroup;
     public GameObject BGMHandler;
     public AudioClip bgmNormal;
     public AudioClip bgmHappy;
@@ -17,30 +15,13 @@ public class GameStateManager : MonoBehaviour
     public string gameScene;
     public string endScene;
 
-    public Sprite ending1;
+    public int currentEnding = 0;
 
-    private SpriteRenderer sr;
     private AudioSource source;
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         source = GetComponent<AudioSource>();
-    }
-
-    public void StartTutorial()
-    {
-        if (mainMenuGroup != null)
-        {
-            mainMenuGroup.SetActive(false);
-        }
-
-        if (tutorialGroup != null)
-        {
-            tutorialGroup.SetActive(true);
-        }
-
-        Debug.Log("Switched to Tutorial");
     }
 
     //public void BackToMainMenu()
@@ -58,12 +39,7 @@ public class GameStateManager : MonoBehaviour
     //    Debug.Log("Switched to Main Menu");
     //}
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene(gameScene);
-    }
-
-    public void RestartGame()
+    public void BackToMenu()
     {
         SceneManager.LoadScene(menuScene);
         money = 0;
@@ -71,16 +47,10 @@ public class GameStateManager : MonoBehaviour
 
     public IEnumerator DisplayEnding(int endingNum)
     {
+        // stop the player and camera
         yield return new WaitForSeconds(1.5f);
-        switch (endingNum)
-        {
-            case 1:
-                // switch current ending
-                break;
-            case 2:
-                break;
-        }
-
+        
+        // need script for end scene
         //SceneManager.LoadScene(endScene);
     }
 

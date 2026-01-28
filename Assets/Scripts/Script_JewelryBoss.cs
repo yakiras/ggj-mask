@@ -50,14 +50,19 @@ public class JewelryBoss : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
+            if (playerController.transform.position.x > transform.position.x)
+                sr.flipX = true;
+            else sr.flipX = false;
+
             if (!secondRound) CheckDisguiseR1();
             else CheckDisguiseR2();
         }
     }
+
     void CheckDisguiseR1()
     {
         switch (playerController.currentDisguise)

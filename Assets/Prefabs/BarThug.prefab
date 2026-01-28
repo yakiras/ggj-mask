@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.28, y: -3.65, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,9 @@ MonoBehaviour:
   thugHearts:
   - {fileID: -7577616963651555326, guid: ca8d598462e390149b127f4e9444f1d5, type: 3}
   - {fileID: -3229417231670710205, guid: 69d160f4a037f154cba18118c506bcc9, type: 3}
+  thugFight:
+  - {fileID: -102763767433200972, guid: eab4bda3149712d4f8117d2005253c59, type: 3}
+  - {fileID: 2058498902905776422, guid: 9397c7d34b25bb24b93d0739e966e0b3, type: 3}
   thief: 0
   girl: 0
   thug: 0
