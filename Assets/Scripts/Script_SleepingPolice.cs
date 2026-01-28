@@ -14,11 +14,13 @@ public class SleepingPolice : MonoBehaviour
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
+    private bool canCheckDisguise;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         SetAnimation(idle); // default animation
+        canCheckDisguise = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -28,7 +30,7 @@ public class SleepingPolice : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        CheckDisguise();
+        if (canCheckDisguise) CheckDisguise();
     }
 
     void Update()
@@ -50,6 +52,7 @@ public class SleepingPolice : MonoBehaviour
         SetAnimation(wake);
         yield return new WaitForSeconds(1.0f);
         CheckDisguise();
+        canCheckDisguise = true;
     }
 
     void CheckDisguise()
@@ -58,16 +61,14 @@ public class SleepingPolice : MonoBehaviour
         {
             case "thief":
                 // ENDING 1: alone & prison
-                SetAnimation(wake);
-                GameStateManager.Instance.DisplayEnding(1);
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
                 break;
             case "girl":
                 SetAnimation(hearts);
                 break;
             case "thug":
                 // ENDING 1: alone & prison
-                SetAnimation(wake);
-                GameStateManager.Instance.DisplayEnding(1);
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
                 break;
         }
     }
