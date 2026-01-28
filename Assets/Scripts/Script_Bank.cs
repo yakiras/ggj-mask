@@ -4,7 +4,7 @@ using UnityEngine;
 public class Bank : MonoBehaviour
 {
     public int moneyThreshold = 100;
-    public GameStateManager gameStateManager;
+    public BGMManager bgmManager;
     public JewelryBoss boss;
     public PoliceStation station;
 
@@ -12,14 +12,14 @@ public class Bank : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(gameStateManager.money);
-            if (gameStateManager.money < moneyThreshold)
+            Debug.Log(GameStateManager.Instance.money);
+            if (GameStateManager.Instance.money < moneyThreshold)
             {
-                StartCoroutine(gameStateManager.StartBGM("sad"));
+                StartCoroutine(bgmManager.SwitchBGM("sad"));
             }
             else
             {
-                StartCoroutine(gameStateManager.StartBGM("happy"));
+                StartCoroutine(bgmManager.SwitchBGM("happy"));
             }
 
             boss.Flip();
@@ -31,9 +31,9 @@ public class Bank : MonoBehaviour
             }
             else
             {
-                if (gameStateManager.shopRobbed)
+                if (GameStateManager.Instance.shopRobbed)
                 {
-                    gameStateManager.hasKey = false;
+                    GameStateManager.Instance.hasKey = false;
                     boss.SpawnPolice();
                     station.RemovePolicemen();
                 }

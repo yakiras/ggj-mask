@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: playerController
       value: 
@@ -440,7 +440,7 @@ PrefabInstance:
     - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: playerController
       value: 
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bank
   moneyThreshold: 100
-  gameStateManager: {fileID: 1941476873}
+  bgmManager: {fileID: 0}
   boss: {fileID: 1653527585}
   station: {fileID: 3010038291146272011}
 --- !u!1 &1451710777
@@ -1460,159 +1460,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8720148231054945027, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
   m_PrefabInstance: {fileID: 3648786456514406661}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1941476870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1941476872}
-  - component: {fileID: 1941476873}
-  - component: {fileID: 1941476874}
-  m_Layer: 0
-  m_Name: GameStateManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1941476872
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941476870}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.089241, y: -6.77419, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1941476873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941476870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056e88fbe4688a74aa98cb9f8fc4e3d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
-  BGMHandler: {fileID: 0}
-  bgmNormal: {fileID: 0}
-  bgmHappy: {fileID: 0}
-  bgmSad: {fileID: 0}
-  money: 0
-  hasKey: 0
-  shopRobbed: 0
-  menuScene: 
-  gameScene: 
-  endScene: 
-  currentEnding: 0
---- !u!82 &1941476874
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1941476870}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &2064421887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8923188424225286388, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
@@ -1673,7 +1520,7 @@ PrefabInstance:
     - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: playerController
       value: 
@@ -1742,8 +1589,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6137987926421561312, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1273848318468365693}
   m_SourcePrefab: {fileID: 100100000, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+--- !u!1 &1273848318468365692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6137987926421561312, guid: 457416e44b25c6340a17eeac82528f78, type: 3}
+  m_PrefabInstance: {fileID: 1273848318468365691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1273848318468365693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273848318468365692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f61bf1f90cc70c43b49df52654f7cc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Script_BGMManager
+  BGMHandler: {fileID: 0}
+  bgmNormal: {fileID: 0}
+  bgmHappy: {fileID: 0}
+  bgmSad: {fileID: 0}
 --- !u!1001 &1884967848203142261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1754,11 +1625,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1202042510895305317, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: m_Size.x
-      value: 4.70496
+      value: 5.0630493
       objectReference: {fileID: 0}
     - target: {fileID: 1202042510895305317, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: m_Offset.x
-      value: -2.250414
+      value: -2.0713692
       objectReference: {fileID: 0}
     - target: {fileID: 1781285228141233129, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1767,7 +1638,7 @@ PrefabInstance:
     - target: {fileID: 2356819879438916037, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 2356819879438916037, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: playerController
       value: 
@@ -1811,7 +1682,7 @@ PrefabInstance:
     - target: {fileID: 7271692625311612100, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 7271692625311612100, guid: d85e8a5c3a6607c4bb8833c8bda1523b, type: 3}
       propertyPath: playerController
       value: 
@@ -1920,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 3531754594406411382, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 3531754594406411382, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: playerController
       value: 
@@ -1948,7 +1819,7 @@ PrefabInstance:
     - target: {fileID: 6092713028949565881, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 6092713028949565881, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: playerController
       value: 
@@ -1956,7 +1827,7 @@ PrefabInstance:
     - target: {fileID: 7462796221603250838, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 7462796221603250838, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: playerController
       value: 
@@ -2049,7 +1920,7 @@ PrefabInstance:
     - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: gameStateManager
       value: 
-      objectReference: {fileID: 1941476873}
+      objectReference: {fileID: 0}
     - target: {fileID: 5810452341798156711, guid: 9ec85513f47becc45ad2ae5d8cb961cc, type: 3}
       propertyPath: playerController
       value: 
@@ -2167,4 +2038,3 @@ SceneRoots:
   - {fileID: 1527912084}
   - {fileID: 290019648}
   - {fileID: 1273848318468365691}
-  - {fileID: 1941476872}

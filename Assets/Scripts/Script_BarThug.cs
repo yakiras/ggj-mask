@@ -4,7 +4,6 @@ using UnityEngine;
 public class BarThug : MonoBehaviour
 {
     public PlayerDisguise playerController;
-    public GameStateManager gameStateManager;
 
     public Sprite[] playerDrink;
     public Sprite[] thugIdle;
@@ -53,7 +52,7 @@ public class BarThug : MonoBehaviour
             case "thief":
                 // ENDING 1: get beat up by thug
                 playerController.SetAnimation(thugFight);
-                StartCoroutine(gameStateManager.DisplayEnding(1));
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
                 gameObject.SetActive(false);
                 break;
             case "girl":

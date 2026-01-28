@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class JewelryBoss : MonoBehaviour
 {
     public PlayerDisguise playerController;
-    public GameStateManager gameStateManager;
 
     public Sprite[] idle;
     public Sprite[] hearts;
@@ -78,7 +77,7 @@ public class JewelryBoss : MonoBehaviour
             case "thug":
                 thug = true;
                 SetAnimation(sad);
-                gameStateManager.hasKey = true;
+                GameStateManager.Instance.hasKey = true;
                 break;
         }
         secondRound = true;
@@ -90,11 +89,11 @@ public class JewelryBoss : MonoBehaviour
         {
             case "thief":
                 SetAnimation(readyGun);
-                // ENDING 2: jail with thug(s)
-                StartCoroutine(gameStateManager.DisplayEnding(2));
+                // ENDING 2: bro & prison
+                StartCoroutine(GameStateManager.Instance.DisplayEnding(2));
                 break;
             case "girl":
-                if (!gameStateManager.shopRobbed)
+                if (!GameStateManager.Instance.shopRobbed)
                     SetAnimation(hearts);
                 break;
             case "thug":
@@ -102,11 +101,11 @@ public class JewelryBoss : MonoBehaviour
                 {
                     SetAnimation(shootGun);
                     // ENDING 3: fucking dies
-                    StartCoroutine(gameStateManager.DisplayEnding(3));
+                    StartCoroutine(GameStateManager.Instance.DisplayEnding(3));
                 }
                 else
                 {
-                    StartCoroutine(gameStateManager.DisplayEnding(2));
+                    StartCoroutine(GameStateManager.Instance.DisplayEnding(2));
                 }
                 break;
         }

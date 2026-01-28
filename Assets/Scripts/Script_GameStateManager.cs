@@ -4,10 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
-    public GameObject BGMHandler;
-    public AudioClip bgmNormal;
-    public AudioClip bgmHappy;
-    public AudioClip bgmSad;
+    public static GameStateManager Instance;
+
     public int money = 0;
     public bool hasKey = false;
     public bool shopRobbed = false;
@@ -17,11 +15,17 @@ public class GameStateManager : MonoBehaviour
 
     public int currentEnding = 0;
 
-    private AudioSource source;
-
-    private void Start()
+    void Awake()
     {
-        source = GetComponent<AudioSource>();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // remove duplicates
+        }
     }
 
     //public void BackToMainMenu()
@@ -47,51 +51,11 @@ public class GameStateManager : MonoBehaviour
 
     public IEnumerator DisplayEnding(int endingNum)
     {
-        // stop the player and camera
-        yield return new WaitForSeconds(1.5f);
+        currentEnding = endingNum;
+        // stop player
+        yield return null;
+        //yield return new WaitForSeconds(1.5f);
         
-        // need script for end scene
-        //SceneManager.LoadScene(endScene);
-    }
-
-    public IEnumerator StopBGM()
-    {
-        float startVolume = source.volume;
-        float t = 0f;
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime / 1.0f;
-            source.volume = Mathf.Lerp(startVolume, 0f, t);
-            yield return null;
-        }
-
-        source.Stop();
-        source.volume = startVolume; // reset for next time
-    }
-    public IEnumerator StartBGM(string type)
-    {
-        switch (type)
-        {
-            case "normal":
-                source.clip = bgmNormal;
-                break;
-            case "happy":
-                source.clip = bgmHappy;
-                break;
-            case "sad":
-                source.clip = bgmSad;
-                break;
-        }
-        source.volume = 0f;
-        source.Play();
-
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / 1.0f;
-            source.volume = Mathf.Lerp(0f, 0.5f, t);
-            yield return null;
-        }
+        SceneManager.LoadScene(endScene);
     }
 }

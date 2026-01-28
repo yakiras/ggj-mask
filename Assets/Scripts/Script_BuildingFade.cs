@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BuildingFade : MonoBehaviour
 {
-    public GameStateManager gameStateManager;
     public PlayerDisguise playerController;
     public SpriteRenderer topSprite;   // assign the top sprite
     public float fadeSpeed = 2f;       // how fast it fades
@@ -40,7 +39,7 @@ public class BuildingFade : MonoBehaviour
         {
             if (isJewelryShop)
             {
-                if (gameStateManager.hasKey)
+                if (GameStateManager.Instance.hasKey)
                 {
                     playerNear = true;
                 }
@@ -58,13 +57,13 @@ public class BuildingFade : MonoBehaviour
         if (!isJewelryShop) return;
 
         if (playerController.currentDisguise == "thief" &&
-            gameStateManager.hasKey &&
-            !gameStateManager.shopRobbed &&
+            GameStateManager.Instance.hasKey &&
+            !GameStateManager.Instance.shopRobbed &&
             !isStealing)
         {
-            gameStateManager.shopRobbed = true;
+            GameStateManager.Instance.shopRobbed = true;
             isStealing = true;
-            gameStateManager.money += 100;
+            GameStateManager.Instance.money += 100;
             playerController.StartStealing();
         }
     }
