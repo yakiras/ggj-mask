@@ -4,7 +4,7 @@ public class AutoWalker : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rightBoundary = 20f; // Set this to the end of your level
-    public float leftBoundary = 0f;    // Set this to the start of your level
+    public float leftBoundary = -6f;    // Set this to the start of your level
 
     void Update()
     {

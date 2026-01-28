@@ -39,12 +39,15 @@ public class Ballroom : MonoBehaviour
 
     public void AnimateChildrenWithRandomOffsets()
     {
-        foreach (Transform child in people)
+        if (people != null)
         {
-            SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
-            if (sr != null)
+            foreach (Transform child in people)
             {
-                StartCoroutine(AnimateChild(sr));
+                SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    StartCoroutine(AnimateChild(sr));
+                }
             }
         }
     }
