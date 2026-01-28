@@ -53,9 +53,9 @@ public class GameStateManager : MonoBehaviour
     {
         currentEnding = endingNum;
         // stop player
-        yield return null;
         //yield return new WaitForSeconds(1.5f);
         
         SceneManager.LoadScene(endScene);
+        yield return null;
     }
 }
