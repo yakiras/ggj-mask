@@ -36,7 +36,6 @@ public class Ballroom : MonoBehaviour
         {
             case "thief":
                 AnimateChildrenWithRandomOffsets();
-                GameStateManager.Instance.money += 25;
                 // add cha-ching sfx
                 break;
             case "girl":

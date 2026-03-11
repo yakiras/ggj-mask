@@ -13,6 +13,8 @@ public class GameStateManager : MonoBehaviour
     public int moneyThreshold = 100;
     public bool hasKey = false;
     public bool shopRobbed = false;
+    public bool barRobbed = false;
+    public bool ballroomRobbed = false;
     public bool secondTrip = false;
     public bool stopMoving = false;
     public bool atBankers = false;

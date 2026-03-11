@@ -57,22 +57,36 @@ public class BuildingFade : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if ((isBallroom || isBar) && playerController.currentDisguise == "thief")
+            if (playerController.currentDisguise == "thief")
             {
+                if (isBallroom && !GameStateManager.Instance.ballroomRobbed)
+                {
+                    GameStateManager.Instance.money += 25;
+                    GameStateManager.Instance.ballroomRobbed = true;
+                }
+                else if (isBar && !GameStateManager.Instance.barRobbed)
+                {
+                    GameStateManager.Instance.money += 75;
+                    GameStateManager.Instance.barRobbed = true;
+                }
+
                 playerController.Steal();
                 return;
             }
 
-            if (playerController.currentDisguise == "thief" &&
-                GameStateManager.Instance.hasKey &&
-                !GameStateManager.Instance.shopRobbed &&
-                !isStealing)
+            if (isJewelryShop)
             {
-                GameStateManager.Instance.shopRobbed = true;
-                GameStateManager.Instance.alertLevel = 2;
-                isStealing = true;
-                GameStateManager.Instance.money += 100;
-                playerController.Steal();
+                if (playerController.currentDisguise == "thief" &&
+                    GameStateManager.Instance.hasKey &&
+                    !GameStateManager.Instance.shopRobbed &&
+                    !isStealing)
+                {
+                    GameStateManager.Instance.shopRobbed = true;
+                    GameStateManager.Instance.alertLevel = 2;
+                    isStealing = true;
+                    GameStateManager.Instance.money += 100;
+                    playerController.Steal();
+                }
             }
         }
     }
