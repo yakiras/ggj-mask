@@ -90,8 +90,8 @@ public class SleepingPolice : MonoBehaviour
     public void StayAwake()
     {
         Vector3 pos = transform.localPosition;
-        pos.x = -2f;
-        pos.y = 0;
+        pos.x = -2.3f;
+        pos.y = -1.5f;
         transform.localPosition = pos;
         sr.sortingLayerName = "NPC(inside)";
         SetAnimation(awake);

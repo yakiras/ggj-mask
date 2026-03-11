@@ -41,7 +41,6 @@ public class Banker : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player is here!");
             StartCoroutine(EvaluatePlayer());
         }
     }

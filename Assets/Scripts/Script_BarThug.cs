@@ -52,11 +52,14 @@ public class BarThug : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CheckDisguise();
+            if (!GameStateManager.Instance.secondTrip)
+                CheckDisguise();
         }
 
         if (!GameStateManager.Instance.secondTrip && collision.CompareTag("Popo"))
         {
+            Debug.Log("follow false");
+
             SetAnimation(thugFight);
             following = false;
             GameStateManager.Instance.broFollowing = false;
@@ -71,6 +74,7 @@ public class BarThug : MonoBehaviour
             {
                 if (GameStateManager.Instance.alertLevel > 0)
                 {
+                    Debug.Log("alert > 0");
                     GameStateManager.Instance.broFollowing = true;
                     sr.sortingLayerName = "Player";
                 }
