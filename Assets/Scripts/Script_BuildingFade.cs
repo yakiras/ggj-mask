@@ -63,14 +63,14 @@ public class BuildingFade : MonoBehaviour
                 {
                     GameStateManager.Instance.money += 25;
                     GameStateManager.Instance.ballroomRobbed = true;
+                    playerController.Steal();
                 }
                 else if (isBar && !GameStateManager.Instance.barRobbed)
                 {
                     GameStateManager.Instance.money += 75;
                     GameStateManager.Instance.barRobbed = true;
+                    playerController.Steal();
                 }
-
-                playerController.Steal();
                 return;
             }
 
