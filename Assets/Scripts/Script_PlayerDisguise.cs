@@ -19,6 +19,8 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] girlTransform;
     public Sprite[] thugTransform;
 
+    public InGameUI gameUI;
+
     public float fps = 5.0f;
     public float coolDown = 2.0f;
     public bool inputEnabled = true;
@@ -113,7 +115,9 @@ public class PlayerDisguise : MonoBehaviour
     private void TransformDisguise(string newDisguise)
     {
         currentDisguise = newDisguise;
+        gameUI.SwapIcon(currentDisguise);
         playOnce = true;
+        frameRate = 1f / 5f;
         if (newDisguise == "thief")
         {
             SetAnimation(thiefTransform);
@@ -176,6 +180,7 @@ public class PlayerDisguise : MonoBehaviour
 
     private IEnumerator StartCooldown()
     {
+        gameUI.DisplayCooldown(coolDown);
         inputEnabled = false;
         yield return new WaitForSeconds(coolDown);
         inputEnabled = true;
