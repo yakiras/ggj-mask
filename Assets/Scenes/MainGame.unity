@@ -8386,6 +8386,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 57379170}
     - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
+      propertyPath: sfxGasp
+      value: 
+      objectReference: {fileID: 8300000, guid: 3026dd4577e130149aa9bb8b8f1da934, type: 3}
+    - target: {fileID: 8984252215518826863, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1173816202}

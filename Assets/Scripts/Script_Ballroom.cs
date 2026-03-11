@@ -1,8 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Ballroom : MonoBehaviour
 {
+    public AudioClip sfxGasp;
+    private AudioSource audioSource;
+
     public PlayerDisguise playerController;
     public Sprite[] animationFrames;
     public Transform people;
@@ -12,6 +16,7 @@ public class Ballroom : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         police.SetActive(false);
         frameRate = 0.5f;
         animating = false;
@@ -75,6 +80,8 @@ public class Ballroom : MonoBehaviour
         {
             foreach (Transform child in people)
             {
+                audioSource.PlayOneShot(sfxGasp);
+
                 SpriteRenderer sr = child.GetComponent<SpriteRenderer>();
                 if (sr != null)
                 {

@@ -22,7 +22,7 @@ public class PlayerDisguise : MonoBehaviour
     public InGameUI gameUI;
 
     public float fps = 5.0f;
-    public float coolDown = 2.0f;
+    public float coolDown = 1.5f;
     public bool inputEnabled = true;
 
     private float currentFps;
