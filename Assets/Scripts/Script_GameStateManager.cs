@@ -42,11 +42,17 @@ public class GameStateManager : MonoBehaviour
     {
         if (money < moneyThreshold)
         {
-            InitializeEnding(0);
+            if (broFollowing)
+                InitializeEnding(5);
+            else
+                InitializeEnding(1);
         }
         else
         {
-            InitializeEnding(4);
+            if (broFollowing)
+                InitializeEnding(6);
+            else
+                InitializeEnding(2);
         }
     }
 

@@ -62,6 +62,7 @@ public class BuildingFade : MonoBehaviour
             !isStealing)
         {
             GameStateManager.Instance.shopRobbed = true;
+            GameStateManager.Instance.alertLevel = 2;
             isStealing = true;
             GameStateManager.Instance.money += 100;
             playerController.Steal();

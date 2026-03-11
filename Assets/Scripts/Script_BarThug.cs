@@ -41,7 +41,10 @@ public class BarThug : MonoBehaviour
         if (following)
         {
             Move();
-            if (!GameStateManager.Instance.secondTrip) CheckDisguiseFollowing();
+            if (!GameStateManager.Instance.secondTrip)
+                CheckDisguiseFollowing();
+            else if (transform.position.x < playerMovement.transform.position.x)
+                following = false;
         }
     }
 
@@ -69,7 +72,7 @@ public class BarThug : MonoBehaviour
                 if (GameStateManager.Instance.alertLevel > 0)
                 {
                     GameStateManager.Instance.broFollowing = true;
-                    sr.sortingLayerName = "NPC(outside)";
+                    sr.sortingLayerName = "Player";
                 }
             }
 
