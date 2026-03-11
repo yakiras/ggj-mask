@@ -95,7 +95,8 @@ public class BuildingFade : MonoBehaviour
             if (playerController.currentDisguise.Equals("thief"))
                 playerController.DefaultThiefAnimation();
 
-            if (isBallroom) ballroomLocked = true;
+            if (isBallroom && !GameStateManager.Instance.ballroomRobbed)
+                ballroomLocked = true;
         }
     }
 }

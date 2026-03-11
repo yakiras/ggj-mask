@@ -6,6 +6,7 @@ public class Bank : MonoBehaviour
     public GameObject barThug;
     public JewelryBoss boss;
     public PoliceStation station;
+    public Ballroom ballroom;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -29,6 +30,8 @@ public class Bank : MonoBehaviour
                 boss.SpawnPolice();
                 station.RemovePolicemen();
             }
+            if (GameStateManager.Instance.ballroomRobbed)
+                ballroom.SpawnPolice();
         }
     }
 }

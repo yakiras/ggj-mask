@@ -6,11 +6,15 @@ public class Ballroom : MonoBehaviour
     public PlayerDisguise playerController;
     public Sprite[] animationFrames;
     public Transform people;
+    public GameObject police;
     private float frameRate;
+    private bool animating;
 
     private void Start()
     {
+        police.SetActive(false);
         frameRate = 0.5f;
+        animating = false;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -22,15 +26,20 @@ public class Ballroom : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            CheckDisguise();
+            if (GameStateManager.Instance.secondTrip &&
+                GameStateManager.Instance.ballroomRobbed)
+            {
+                CheckDisguiseR2();
+            }
+            else { CheckDisguise(); }
         }
     }
 
-    void CheckDisguise()
+    private void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
@@ -47,9 +56,22 @@ public class Ballroom : MonoBehaviour
         }
     }
 
+    private void CheckDisguiseR2()
+    {
+        if (playerController.currentDisguise != "girl")
+        {
+            GameStateManager.Instance.InitializeEnding(4);
+        }
+    }
+
+    public void SpawnPolice()
+    {
+        police.SetActive(true);
+    }
+
     public void AnimateChildrenWithRandomOffsets()
     {
-        if (people != null)
+        if (people != null && !animating)
         {
             foreach (Transform child in people)
             {
@@ -60,6 +82,7 @@ public class Ballroom : MonoBehaviour
                 }
             }
         }
+        animating = true;
     }
 
     IEnumerator AnimateChild(SpriteRenderer sr)

@@ -38,13 +38,11 @@ public class BarThug : MonoBehaviour
             sr.sprite = currentAnimation[currentFrame];
         }
 
-        if (following)
+        if (following && !GameStateManager.Instance.stopMoving)
         {
             Move();
             if (!GameStateManager.Instance.secondTrip)
                 CheckDisguiseFollowing();
-            else if (transform.position.x < playerMovement.transform.position.x)
-                following = false;
         }
     }
 
@@ -56,13 +54,13 @@ public class BarThug : MonoBehaviour
                 CheckDisguise();
         }
 
-        if (!GameStateManager.Instance.secondTrip && collision.CompareTag("Popo"))
+        if (collision.CompareTag("Popo"))
         {
-            Debug.Log("follow false");
-
             SetAnimation(thugFight);
             following = false;
             GameStateManager.Instance.broFollowing = false;
+
+            collision.gameObject.SetActive(false);
         }
     }
 

@@ -47,12 +47,4 @@ public class IdlePolice : MonoBehaviour
         sr.sprite = frames[0];
         frames = new Sprite[0];
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Bro"))
-        {
-            sr.enabled = false;
-        }
-    }
 }
