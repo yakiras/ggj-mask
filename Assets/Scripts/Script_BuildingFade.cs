@@ -11,7 +11,7 @@ public class BuildingFade : MonoBehaviour
 
     private bool playerNear = false;
     private bool ballroomLocked = false;
-    private bool isStealing = false;
+    //private bool isStealing = false;
 
     void Update()
     {
@@ -71,21 +71,16 @@ public class BuildingFade : MonoBehaviour
                     GameStateManager.Instance.barRobbed = true;
                     playerController.Steal();
                 }
-                return;
-            }
-
-            if (isJewelryShop)
-            {
-                if (playerController.currentDisguise == "thief" &&
-                    GameStateManager.Instance.hasKey &&
-                    !GameStateManager.Instance.shopRobbed &&
-                    !isStealing)
+                else if (isJewelryShop)
                 {
-                    GameStateManager.Instance.shopRobbed = true;
-                    GameStateManager.Instance.alertLevel = 2;
-                    isStealing = true;
-                    GameStateManager.Instance.money += 100;
-                    playerController.Steal();
+                    if (GameStateManager.Instance.hasKey &&
+                        !GameStateManager.Instance.shopRobbed)
+                    {
+                        GameStateManager.Instance.shopRobbed = true;
+                        GameStateManager.Instance.alertLevel = 2;
+                        GameStateManager.Instance.money += 100;
+                        playerController.Steal();
+                    }
                 }
             }
         }
