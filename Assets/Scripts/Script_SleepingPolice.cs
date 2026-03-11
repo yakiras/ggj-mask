@@ -24,14 +24,18 @@ public class SleepingPolice : MonoBehaviour
         canCheckDisguise = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        StartCoroutine(WaitBeforeCheck());
+        if (!GameStateManager.Instance.secondTrip)
+            StartCoroutine(WaitBeforeCheck());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (canCheckDisguise) CheckDisguise();
+        if (GameStateManager.Instance.secondTrip)
+            CheckDisguiseR2();
+        else if (canCheckDisguise)
+            CheckDisguise();
     }
 
     void Update()
@@ -56,21 +60,30 @@ public class SleepingPolice : MonoBehaviour
         canCheckDisguise = true;
     }
 
-    void CheckDisguise()
+    private void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
             case "thief":
-                // ENDING 1: alone & prison
-                GameStateManager.Instance.InitializeEnding(1);
+                // ENDING 0: alone & poor
+                GameStateManager.Instance.InitializeEnding(0);
                 break;
             case "girl":
                 SetAnimation(hearts);
                 break;
             case "thug":
-                // ENDING 1: alone & prison
-                GameStateManager.Instance.InitializeEnding(1);
+                // ENDING 0: alone & poor
+                GameStateManager.Instance.InitializeEnding(0);
                 break;
+        }
+    }
+
+    private void CheckDisguiseR2()
+    {
+        if (!playerController.currentDisguise.Equals("girl"))
+        {
+            // ENDING 4: bro & prison
+            GameStateManager.Instance.InitializeEnding(4);
         }
     }
 
@@ -78,7 +91,7 @@ public class SleepingPolice : MonoBehaviour
     {
         Vector3 pos = transform.localPosition;
         pos.x = -2f;
-        pos.y = -2.6f;
+        pos.y = 0;
         transform.localPosition = pos;
         sr.sortingLayerName = "NPC(inside)";
         SetAnimation(awake);

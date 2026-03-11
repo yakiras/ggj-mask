@@ -7,12 +7,15 @@ public class Ending : MonoBehaviour
 {
     public Canvas canvas;
     public float fps = 3.0f;
-    public Sprite[] ending0; // alone & poor
-    public Sprite[] ending1; // alone & prison
-    public Sprite[] ending2; // bro & prison
-    public Sprite[] ending3OP;
+    public Sprite[] ending0; // alone & prison
+    public Sprite[] ending1; // alone & poor
+    public Sprite[] ending2; // alone & rich
     public Sprite[] ending3; // fucking dead
-    public Sprite[] ending4; // rich
+    public Sprite[] ending4; // bro & prison
+    public Sprite[] ending5; // bro & poor
+    public Sprite[] ending6; // bro & rich
+
+    public Sprite[] ending3OP;
 
     public string menuScene;
     public string gameScene;
@@ -56,6 +59,12 @@ public class Ending : MonoBehaviour
                 break;
             case 4:
                 SetAnimation(ending4);
+                break;
+            case 5:
+                SetAnimation(ending5);
+                break;
+            case 6:
+                SetAnimation(ending6);
                 break;
             default:
                 break;

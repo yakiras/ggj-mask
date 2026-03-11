@@ -118,21 +118,27 @@ public class JewelryBoss : MonoBehaviour
             {
                 if (playerController.currentDisguise.Equals("thief"))
                 {
-                    // boss points gun -> END
+                    // ENDING 4: bro & prison
                     SetAnimation(readyGun);
+                    GameStateManager.Instance.InitializeEnding(4);
                 }
                 else
                 {
-                    // shot by boss -> END
+                    // ENDING 3: fucking dead
+                    SetAnimation(readyGun);
+                    GameStateManager.Instance.InitializeEnding(3);
                 }
             }
             if (GameStateManager.Instance.alertLevel == 1)
             {
-                // beat up by bodyguard -> END
+                // ENDING 3: fucking dead
+                SetAnimation(readyGun);
+                GameStateManager.Instance.InitializeEnding(3);
             }
             if (GameStateManager.Instance.alertLevel == 2)
             {
-                // arrested -> END
+                // ENDING 4: bro & prison
+                GameStateManager.Instance.InitializeEnding(4);
             }
         }
     }

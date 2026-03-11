@@ -67,7 +67,10 @@ public class BarThug : MonoBehaviour
             if (GameStateManager.Instance.secondTrip)
             {
                 if (GameStateManager.Instance.alertLevel > 0)
+                {
                     GameStateManager.Instance.broFollowing = true;
+                    sr.sortingLayerName = "NPC(outside)";
+                }
             }
 
             if (GameStateManager.Instance.broFollowing)
@@ -82,8 +85,9 @@ public class BarThug : MonoBehaviour
         switch (playerController.currentDisguise)
         {
             case "thief":
-                // ENDING 1: get beat up by thug
+                // ENDING 1: alone & broke
                 BeatUpPlayer();
+                GameStateManager.Instance.InitializeEnding(1);
                 break;
             case "girl":
                 SetAnimation(thugHearts);

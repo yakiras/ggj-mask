@@ -3,6 +3,7 @@ using UnityEngine;
 // This class evaluates & changes environment visuals/status
 public class Bank : MonoBehaviour
 {
+    public GameObject barThug;
     public JewelryBoss boss;
     public PoliceStation station;
 
@@ -10,8 +11,8 @@ public class Bank : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //boss.Flip();
             station.JailThug();
+            barThug.SetActive(false);
 
             if (GameStateManager.Instance.alertLevel == 0)
             {
@@ -20,7 +21,7 @@ public class Bank : MonoBehaviour
             }
             if (GameStateManager.Instance.alertLevel == 1)
             {
-                station.AwakenPolice();
+                station.RemoveSleepingPolice();
                 boss.SpawnBodyguard();
             }
             if (GameStateManager.Instance.alertLevel == 2)

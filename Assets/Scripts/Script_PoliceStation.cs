@@ -3,6 +3,7 @@ using UnityEngine;
 public class PoliceStation : MonoBehaviour
 {
     public GameObject policemen;
+    public GameObject policeSleepingGO;
     public SleepingPolice policeSleeping;
     public IdlePolice policeIdle1;
     public IdlePolice policeIdle2;
@@ -21,9 +22,14 @@ public class PoliceStation : MonoBehaviour
         AwakenPolice();
     }
 
-    public void AwakenPolice()
+    private void AwakenPolice()
     {
         policeSleeping.StayAwake();
+    }
+
+    public void RemoveSleepingPolice()
+    {
+        policeSleepingGO.SetActive(false);
     }
 
     public void RemovePolicemen()
@@ -33,6 +39,6 @@ public class PoliceStation : MonoBehaviour
 
     public void JailThug()
     {
-        thug.SetActive(false);
+        thug.SetActive(true);
     }
 }

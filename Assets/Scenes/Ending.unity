@@ -302,16 +302,34 @@ MonoBehaviour:
   canvas: {fileID: 2084720440}
   fps: 3
   ending0:
+  - {fileID: 7412481603497679926, guid: dd5ec3cb8d26a764abf0d60a4a6fe383, type: 3}
+  - {fileID: -1250442670604459380, guid: fdeb3c11d534ba14b9a7d0496022186f, type: 3}
+  ending1:
   - {fileID: 3251159278583908356, guid: 553de62a6e6d7f54fa67f2b9ac171b2a, type: 3}
   - {fileID: 378622975672203362, guid: 4fae69698163d3140978a8d594793971, type: 3}
   - {fileID: 911978912189650321, guid: 0a65c1b385878d24f8d2c4198b205dd3, type: 3}
-  ending1:
-  - {fileID: 7412481603497679926, guid: dd5ec3cb8d26a764abf0d60a4a6fe383, type: 3}
-  - {fileID: -1250442670604459380, guid: fdeb3c11d534ba14b9a7d0496022186f, type: 3}
   ending2:
+  - {fileID: 6258885814743432056, guid: 909a9dcbd9d21bc4db2b9aa7b695086e, type: 3}
+  - {fileID: -29428214990291271, guid: 06697cf8323df4642861692d26418204, type: 3}
+  - {fileID: -6819171481888569562, guid: 9905fd9e64b9cc94aa3a5bbffcff7999, type: 3}
+  ending3:
+  - {fileID: -6625630824426668987, guid: b60cacfb11dbf6e488007d1058473af2, type: 3}
+  - {fileID: 1081508066926749962, guid: 49a022fd58496504f880c139bfeb6ecb, type: 3}
+  - {fileID: 1874955456053768104, guid: ddbd3c5992b92704c97f0588781bdfc8, type: 3}
+  ending4:
   - {fileID: 3903090504879774880, guid: a35dd8e68553d1b4a829edbfe24dd5a3, type: 3}
   - {fileID: 5069994357131042415, guid: acf99f7222583f540b7bb3619db4482b, type: 3}
   - {fileID: -1957593796308998332, guid: bad5bf17c3393464a872a0442ea56f34, type: 3}
+  ending5:
+  - {fileID: 1123670801961055402, guid: 66236097ad0ff424d8c16ef08df4ebc7, type: 3}
+  - {fileID: 2493288519066775222, guid: aa4c05aaca11e4b4c9d22034fa0ec596, type: 3}
+  - {fileID: 4014953215164282225, guid: 2b2bc607defdb1e46bd6afdda8d53d15, type: 3}
+  - {fileID: -2193757317790604958, guid: 00d0abf4923b2b24ebbcdb03eacc6c94, type: 3}
+  - {fileID: 3972754393778081911, guid: b8682ec8cc7f9be4e94c39a23382ed82, type: 3}
+  ending6:
+  - {fileID: -8370053015263520475, guid: 9fc52f4340d923e449b56f53b07c15cf, type: 3}
+  - {fileID: -1946763900801604067, guid: 983bf01ed04c869448d9621ce6fae0a1, type: 3}
+  - {fileID: 1773032129043499690, guid: 48b1bcd33e426ce458f063c4ebc62599, type: 3}
   ending3OP:
   - {fileID: -3495073886819530273, guid: 6b4692488eb4fb9458484c0662adc742, type: 3}
   - {fileID: -3348418769470225044, guid: 107b5538ecc83a548bd60ae59183bafa, type: 3}
@@ -319,14 +337,6 @@ MonoBehaviour:
   - {fileID: 380068960093859131, guid: 09a1892483cd11549a91ea7ce1f6d00e, type: 3}
   - {fileID: 7291473762308239621, guid: 1bcf1685adfc7404da6647900240b4cf, type: 3}
   - {fileID: -5888614134009444215, guid: 9ce24378528295b45b0119c400f51a3e, type: 3}
-  ending3:
-  - {fileID: -6625630824426668987, guid: b60cacfb11dbf6e488007d1058473af2, type: 3}
-  - {fileID: 1081508066926749962, guid: 49a022fd58496504f880c139bfeb6ecb, type: 3}
-  - {fileID: 1874955456053768104, guid: ddbd3c5992b92704c97f0588781bdfc8, type: 3}
-  ending4:
-  - {fileID: 6258885814743432056, guid: 909a9dcbd9d21bc4db2b9aa7b695086e, type: 3}
-  - {fileID: -29428214990291271, guid: 06697cf8323df4642861692d26418204, type: 3}
-  - {fileID: -6819171481888569562, guid: 9905fd9e64b9cc94aa3a5bbffcff7999, type: 3}
   menuScene: MainMenu
   gameScene: MainGame
   endScene: Ending

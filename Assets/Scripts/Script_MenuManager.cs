@@ -97,7 +97,7 @@ public class MenuManager : MonoBehaviour
     {
         // stop player
         GameStateManager.Instance.stopMoving = true;
-        // TO-DO: set ending screen to the correct one
+
         yield return new WaitForSeconds(1.5f);
 
         SceneManager.LoadScene(endScene);

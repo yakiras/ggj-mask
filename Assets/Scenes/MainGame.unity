@@ -710,12 +710,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &332006679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1555551352240985254, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
+  m_PrefabInstance: {fileID: 3010038291146272006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &332006682 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6092713028949565881, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
   m_PrefabInstance: {fileID: 3010038291146272006}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 332006679}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc254ebbb68fee346a20ca59cbdfac2a, type: 3}
@@ -5436,6 +5441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5b9a2b1d961eb479e8e2f7017b695c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bank
+  barThug: {fileID: 1686720000}
   boss: {fileID: 1653527585}
   station: {fileID: 3010038291146272011}
 --- !u!114 &1440719963
@@ -7998,6 +8004,10 @@ PrefabInstance:
       propertyPath: policeSleeping
       value: 
       objectReference: {fileID: 332006682}
+    - target: {fileID: 5415346776865741690, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
+      propertyPath: policeSleepingGO
+      value: 
+      objectReference: {fileID: 332006679}
     - target: {fileID: 5708386940468539065, guid: b093e2529a0fe6e4c8925dbcfb5c1567, type: 3}
       propertyPath: m_TagString
       value: Popo
