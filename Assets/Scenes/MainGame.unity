@@ -957,6 +957,10 @@ PrefabInstance:
       value: bar_outside_0
       objectReference: {fileID: 0}
     - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
+      propertyPath: isBar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: gameStateManager
       value: 
       objectReference: {fileID: 0}
@@ -5461,6 +5465,7 @@ MonoBehaviour:
   fadeSpeed: 2
   isJewelryShop: 0
   isBallroom: 0
+  isBar: 0
 --- !u!1 &1451710777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7548,6 +7553,10 @@ PrefabInstance:
     - target: {fileID: 1749203942614149057, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: m_Name
       value: Ballroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
+      propertyPath: isBallroom
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5899271829417857688, guid: 3e282e4409900d940a02519252c9cf0f, type: 3}
       propertyPath: playerController

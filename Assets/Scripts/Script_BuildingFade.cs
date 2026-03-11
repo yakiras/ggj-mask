@@ -7,6 +7,7 @@ public class BuildingFade : MonoBehaviour
     public float fadeSpeed = 2f;       // how fast it fades
     public bool isJewelryShop = false;
     public bool isBallroom = false;
+    public bool isBar = false;
 
     private bool playerNear = false;
     private bool ballroomLocked = false;
@@ -52,20 +53,27 @@ public class BuildingFade : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (!isJewelryShop) return;
-
-        if (playerController.currentDisguise == "thief" &&
-            GameStateManager.Instance.hasKey &&
-            !GameStateManager.Instance.shopRobbed &&
-            !isStealing)
+        if (other.CompareTag("Player"))
         {
-            GameStateManager.Instance.shopRobbed = true;
-            GameStateManager.Instance.alertLevel = 2;
-            isStealing = true;
-            GameStateManager.Instance.money += 100;
-            playerController.Steal();
+            if ((isBallroom || isBar) && playerController.currentDisguise == "thief")
+            {
+                playerController.Steal();
+                return;
+            }
+
+            if (playerController.currentDisguise == "thief" &&
+                GameStateManager.Instance.hasKey &&
+                !GameStateManager.Instance.shopRobbed &&
+                !isStealing)
+            {
+                GameStateManager.Instance.shopRobbed = true;
+                GameStateManager.Instance.alertLevel = 2;
+                isStealing = true;
+                GameStateManager.Instance.money += 100;
+                playerController.Steal();
+            }
         }
     }
 

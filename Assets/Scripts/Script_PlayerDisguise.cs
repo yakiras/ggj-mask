@@ -94,7 +94,7 @@ public class PlayerDisguise : MonoBehaviour
 
     public void BlowKiss()
     {
-        currentFps = 2f;
+        currentFps = 3f;
         frameRate = 1f / currentFps;
 
         StartCoroutine(SetAnimationWithDelay(blowKiss));
@@ -109,7 +109,7 @@ public class PlayerDisguise : MonoBehaviour
 
     public void GetBeatUp()
     {
-        SetAnimationWithDelay(beatUp);
+        StartCoroutine(SetAnimationWithDelay(beatUp));
     }
 
     public void DefaultThiefAnimation()
