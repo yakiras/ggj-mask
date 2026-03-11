@@ -15,6 +15,10 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] stealing;
     public Sprite[] beatUp;
 
+    public Sprite[] thiefTransform;
+    public Sprite[] girlTransform;
+    public Sprite[] thugTransform;
+
     public float fps = 5.0f;
     public float coolDown = 2.0f;
     public bool inputEnabled = true;
@@ -26,6 +30,8 @@ public class PlayerDisguise : MonoBehaviour
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
+    private bool playOnce = false;
+    private Sprite[] nextAnimation;
 
     void Start()
     {
@@ -53,39 +59,79 @@ public class PlayerDisguise : MonoBehaviour
                     currentFps = fps;
                     frameRate = 1.0f / currentFps;
 
-                    currentDisguise = "thief";
-                    StartCoroutine(SetAnimationWithDelay(thiefWalk));
+                    TransformDisguise("thief");
                 }
                 if (Keyboard.current.digit2Key.wasPressedThisFrame)
                 {
                     currentFps = fps;
                     frameRate = 1.0f / currentFps;
 
-                    currentDisguise = "girl";
-                    StartCoroutine(SetAnimationWithDelay(girlWalk));
+                    TransformDisguise("girl");
                 }
                 if (Keyboard.current.digit3Key.wasPressedThisFrame)
                 {
                     currentFps = fps;
                     frameRate = 1.0f / currentFps;
 
-                    currentDisguise = "thug";
-                    StartCoroutine(SetAnimationWithDelay(thugWalk));
+                    TransformDisguise("thug");
                 }
             }
         }
 
-        // Update frame
         if (currentAnimation == null || currentAnimation.Length == 0) return;
 
         timer += Time.deltaTime;
         if (timer >= frameRate)
         {
             timer = 0f;
-            currentFrame = (currentFrame + 1) % currentAnimation.Length;
+
+            // PLAY ONCE MODE
+            if (playOnce)
+            {
+                currentFrame++;
+
+                if (currentFrame >= currentAnimation.Length)
+                {
+                    // switch animation
+                    frameRate = 1.0f / fps;
+                    currentAnimation = nextAnimation;
+                    currentFrame = 0;
+                    playOnce = false;
+                    return;
+                }
+            }
+            else
+            {
+                // LOOP MODE
+                currentFrame = (currentFrame + 1) % currentAnimation.Length;
+            }
+
             sr.sprite = currentAnimation[currentFrame];
         }
     }
+
+    private void TransformDisguise(string newDisguise)
+    {
+        currentDisguise = newDisguise;
+        playOnce = true;
+        if (newDisguise == "thief")
+        {
+            SetAnimation(thiefTransform);
+            nextAnimation = thiefWalk;
+        }
+        if (newDisguise == "girl")
+        {
+            SetAnimation(girlTransform);
+            nextAnimation = girlWalk;
+        }
+        if (newDisguise == "thug")
+        {
+            SetAnimation(thugTransform);
+            nextAnimation = thugWalk;
+        }
+        StartCoroutine(StartCooldown());
+    }
+
     public void Steal()
     {
         StartCoroutine(SetAnimationWithDelay(stealing));
@@ -126,6 +172,13 @@ public class PlayerDisguise : MonoBehaviour
         frameRate = 1f / currentFps;
         SetAnimation(girlWalk);
         currentDisguise = "girl";
+    }
+
+    private IEnumerator StartCooldown()
+    {
+        inputEnabled = false;
+        yield return new WaitForSeconds(coolDown);
+        inputEnabled = true;
     }
 
     public void SetAnimation(Sprite[] newAnimation)

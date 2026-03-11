@@ -8387,6 +8387,46 @@ PrefabInstance:
       propertyPath: 'stealing.Array.data[5]'
       value: 
       objectReference: {fileID: 3465286685962602723, guid: a511b04efec3a624f81e9a451ad5dc50, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: girlTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: thugTransform.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: thiefTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'girlTransform.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3919670814517644895, guid: 6a629c74da34f5041b0693a1493d12b0, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'girlTransform.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7668927619817970910, guid: 86b49cbedd163e243affecc140a1828f, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'thugTransform.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3919670814517644895, guid: 6a629c74da34f5041b0693a1493d12b0, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'thugTransform.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1522664690319823894, guid: fecc8725836a6dc41b1ec62057081abd, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'thugTransform.Array.data[2]'
+      value: 
+      objectReference: {fileID: -3574610483665944067, guid: 8af527025dfdc2b49a9ae9e9935a8e8b, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'thiefTransform.Array.data[0]'
+      value: 
+      objectReference: {fileID: -3919670814517644895, guid: 6a629c74da34f5041b0693a1493d12b0, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: 'thiefTransform.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6036264432846467138, guid: 8a02eab89826d554e8340101f8453e10, type: 3}
     - target: {fileID: 8516886073319634894, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: m_Name
       value: Player
