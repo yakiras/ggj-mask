@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class LoopAnimation : MonoBehaviour
+public class IdlePolice : MonoBehaviour
 {
+    // -3.83, 0
     public Sprite[] frames;
+    public float stationLocation;
     public float frameRate = 0.15f;
 
     private SpriteRenderer sr;
@@ -30,6 +32,27 @@ public class LoopAnimation : MonoBehaviour
             timer = 0f;
             currentFrame = (currentFrame + 1) % frames.Length;
             sr.sprite = frames[currentFrame];
+        }
+    }
+
+    public void ReturnToStation()
+    {
+        sr.enabled = true;
+        Vector3 pos = transform.localPosition;
+        pos.x = stationLocation;
+        pos.y = -1.25f;
+        transform.localPosition = pos;
+        sr.sortingLayerName = "NPC(inside)";
+
+        sr.sprite = frames[0];
+        frames = new Sprite[0];
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bro"))
+        {
+            sr.enabled = false;
         }
     }
 }

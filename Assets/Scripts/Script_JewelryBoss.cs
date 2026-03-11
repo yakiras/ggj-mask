@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,22 +6,25 @@ public class JewelryBoss : MonoBehaviour
 {
     public PlayerDisguise playerController;
 
+    public GameObject[] policemen;
+    public GameObject bodyguard;
+
     public Sprite[] idle;
     public Sprite[] hearts;
     public Sprite[] shock;
     public Sprite[] sad;
     public Sprite[] readyGun;
     public Sprite[] shootGun;
+    public Sprite[] keyDrop;
+    public Sprite[] keyMissing;
 
-    public bool thief = false;
-    public bool girl = false;
-    public bool thug = false;
     private float frameRate = 0.5f; // seconds per frame
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
+    private bool playOnce = false;
 
     void Start()
     {
@@ -36,14 +40,33 @@ public class JewelryBoss : MonoBehaviour
 
     void Update()
     {
-        // Update frame
         if (currentAnimation == null || currentAnimation.Length == 0) return;
 
         timer += Time.deltaTime;
         if (timer >= frameRate)
         {
             timer = 0f;
-            currentFrame = (currentFrame + 1) % currentAnimation.Length;
+
+            // PLAY ONCE MODE - only for key drop
+            if (playOnce)
+            {
+                currentFrame++;
+
+                if (currentFrame >= currentAnimation.Length)
+                {
+                    // switch animation
+                    currentAnimation = keyMissing;
+                    currentFrame = 0;
+                    playOnce = false;
+                    return;
+                }
+            }
+            else
+            {
+                // LOOP MODE
+                currentFrame = (currentFrame + 1) % currentAnimation.Length;
+            }
+
             sr.sprite = currentAnimation[currentFrame];
         }
     }
@@ -56,26 +79,27 @@ public class JewelryBoss : MonoBehaviour
                 sr.flipX = true;
             else sr.flipX = false;
 
-            if (!GameStateManager.Instance.secondTrip) CheckDisguiseR1();
+            if (!GameStateManager.Instance.secondTrip) CheckDisguise();
             else CheckDisguiseR2();
         }
     }
 
-    void CheckDisguiseR1()
+    void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
             case "thief":
-                thief = true;
+                GameStateManager.Instance.alertLevel = 1;
                 SetAnimation(shock);
                 break;
             case "girl":
-                girl = true;
+                // alert level stays at 0
                 SetAnimation(hearts);
                 break;
             case "thug":
-                thug = true;
-                SetAnimation(sad);
+                GameStateManager.Instance.alertLevel = 1;
+                playOnce = true;
+                SetAnimation(keyDrop);
                 GameStateManager.Instance.hasKey = true;
                 break;
         }
@@ -83,29 +107,33 @@ public class JewelryBoss : MonoBehaviour
 
     void CheckDisguiseR2()
     {
-        switch (playerController.currentDisguise)
+        if (playerController.currentDisguise.Equals("girl"))
         {
-            case "thief":
-                SetAnimation(readyGun);
-                // ENDING 2: bro & prison
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(2));
-                break;
-            case "girl":
-                if (!GameStateManager.Instance.shopRobbed)
-                    SetAnimation(hearts);
-                break;
-            case "thug":
-                if (girl)
+            if (!GameStateManager.Instance.shopRobbed)
+                SetAnimation(hearts);
+        }
+        else // thief or thug
+        {
+            if (GameStateManager.Instance.alertLevel == 0)
+            {
+                if (playerController.currentDisguise.Equals("thief"))
                 {
-                    SetAnimation(shootGun);
-                    // ENDING 3: fucking dies
-                    StartCoroutine(GameStateManager.Instance.DisplayEnding(3));
+                    // boss points gun -> END
+                    SetAnimation(readyGun);
                 }
                 else
                 {
-                    StartCoroutine(GameStateManager.Instance.DisplayEnding(2));
+                    // shot by boss -> END
                 }
-                break;
+            }
+            if (GameStateManager.Instance.alertLevel == 1)
+            {
+                // beat up by bodyguard -> END
+            }
+            if (GameStateManager.Instance.alertLevel == 2)
+            {
+                // arrested -> END
+            }
         }
     }
 
@@ -123,24 +151,26 @@ public class JewelryBoss : MonoBehaviour
     {
         Vector3 pos = transform.localPosition;
         pos.x = 0f;
+        pos.y = -2.7f;
         transform.localPosition = pos;
         sr.sortingLayerName = "NPC(inside)";
         SetAnimation(idle);
     }
 
-    public void SpawnPolice()
-    {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-        }
-        SetAnimation(idle);
-    }
     public void SpawnBodyguard()
     {
         ReturnToShop();
         SetAnimation(idle);
-        // todo: need sprite
+        bodyguard.SetActive(true);
+    }
+
+    public void SpawnPolice()
+    {
+        foreach (GameObject police in policemen)
+        {
+            police.SetActive(true);
+        }
+        SetAnimation(idle);
     }
 
     public void Flip()

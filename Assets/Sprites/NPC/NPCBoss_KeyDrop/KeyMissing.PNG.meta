@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 091a190787a7f0849b342dccbcf9409b
+guid: 34ac75b6a7a7bc44fbc74abe8f19e4ad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6001009066017554441
-    second: IMG_0774_0
+      213: -1462746770583396577
+    second: KeyMissing_0
   - first:
-      213: 141808889968620393
-    second: IMG_0774_1
+      213: 6754055970623653052
+    second: KeyMissing_1
+  - first:
+      213: -6588860503559774331
+    second: KeyMissing_2
+  - first:
+      213: -1370174851152856799
+    second: KeyMissing_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0774_0
+      name: KeyMissing_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 10
-        width: 182
-        height: 387
+        x: 102
+        y: 65
+        width: 315
+        height: 364
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffff169c0228bca0800000000000000
-      internalID: -6001009066017554441
+      spriteID: f1fd607ef8743bbe0800000000000000
+      internalID: -1462746770583396577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_0774_1
+      name: KeyMissing_1
       rect:
         serializedVersion: 2
-        x: 274
-        y: 307
-        width: 72
-        height: 38
+        x: 191
+        y: 380
+        width: 19
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 96372902f6ec7f100800000000000000
-      internalID: 141808889968620393
+      spriteID: cb4012aee1a3bbd50800000000000000
+      internalID: 6754055970623653052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeyMissing_2
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 326
+        width: 97
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58fd7b2084aaf84a0800000000000000
+      internalID: -6588860503559774331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KeyMissing_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 346
+        width: 54
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1293cdc7b392cfce0800000000000000
+      internalID: -1370174851152856799
       vertices: []
       indices: 
       edges: []
@@ -150,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2ad870f44015e24459a8b7306e7beb68
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0774_0: -6001009066017554441
-      IMG_0774_1: 141808889968620393
+      KeyMissing_0: -1462746770583396577
+      KeyMissing_1: 6754055970623653052
+      KeyMissing_2: -6588860503559774331
+      KeyMissing_3: -1370174851152856799
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

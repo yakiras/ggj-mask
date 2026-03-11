@@ -4,12 +4,27 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
+
     public GameObject mainMenuGroup;
     public GameObject tutorialGroup;
     public GameObject creditsGroup;
     public string menuScene;
     public string gameScene;
     public string endScene;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // remove duplicates
+        }
+    }
 
     public void StartTutorial()
     {
@@ -76,5 +91,15 @@ public class MenuManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public IEnumerator DisplayEnding()
+    {
+        // stop player
+        GameStateManager.Instance.stopMoving = true;
+        // TO-DO: set ending screen to the correct one
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene(endScene);
     }
 }

@@ -4,11 +4,13 @@ using UnityEngine;
 public class BarThug : MonoBehaviour
 {
     public PlayerDisguise playerController;
+    public AutoWalker playerMovement;
 
-    public Sprite[] playerDrink;
     public Sprite[] thugIdle;
     public Sprite[] thugHearts;
     public Sprite[] thugFight;
+
+    private bool following = false;
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
@@ -35,6 +37,12 @@ public class BarThug : MonoBehaviour
             currentFrame = (currentFrame + 1) % currentAnimation.Length;
             sr.sprite = currentAnimation[currentFrame];
         }
+
+        if (following)
+        {
+            Move();
+            if (!GameStateManager.Instance.secondTrip) CheckDisguiseFollowing();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,6 +50,30 @@ public class BarThug : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             CheckDisguise();
+        }
+
+        if (!GameStateManager.Instance.secondTrip && collision.CompareTag("Popo"))
+        {
+            SetAnimation(thugFight);
+            following = false;
+            GameStateManager.Instance.broFollowing = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (GameStateManager.Instance.secondTrip)
+            {
+                if (GameStateManager.Instance.alertLevel > 0)
+                    GameStateManager.Instance.broFollowing = true;
+            }
+
+            if (GameStateManager.Instance.broFollowing)
+            {
+                following = true;
+            }
         }
     }
 
@@ -51,20 +83,34 @@ public class BarThug : MonoBehaviour
         {
             case "thief":
                 // ENDING 1: get beat up by thug
-                playerController.SetAnimation(thugFight);
-                sr.enabled = false;
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
+                BeatUpPlayer();
                 break;
             case "girl":
                 SetAnimation(thugHearts);
+                GameStateManager.Instance.broFollowing = true;
                 if (playerController.transform.position.x > transform.position.x)
                     sr.flipX = true;
                 else sr.flipX = false;
                 break;
             case "thug":
-                StartCoroutine(playerController.SetAnimationWithDelay(playerDrink, 3.0f));
+                playerController.Cheers();
                 break;
         }
+    }
+
+    void CheckDisguiseFollowing()
+    {
+        if (!playerController.currentDisguise.Equals("girl"))
+        {
+            BeatUpPlayer();
+        }
+    }
+
+    void BeatUpPlayer()
+    {
+        playerController.GetBeatUp();
+        sr.enabled = false;
+        GameStateManager.Instance.InitializeEnding(1);
     }
 
     void SetAnimation(Sprite[] newAnimation)
@@ -75,5 +121,20 @@ public class BarThug : MonoBehaviour
         timer = 0f;
         if (currentAnimation.Length > 0)
             sr.sprite = currentAnimation[0];
+    }
+
+    void Move()
+    {
+        // Calculate movement
+        float step = playerMovement.moveSpeed * Time.deltaTime;
+
+        if (!GameStateManager.Instance.secondTrip)
+        {
+            transform.Translate(Vector2.right * step);
+        }
+        else
+        {
+            transform.Translate(Vector2.left * step);
+        }
     }
 }

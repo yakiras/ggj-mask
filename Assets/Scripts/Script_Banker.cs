@@ -70,7 +70,7 @@ public class Banker : MonoBehaviour
         GameStateManager.Instance.stopMoving = false;
         GameStateManager.Instance.secondTrip = true;
 
-        player.DefaultAnimation();
+        player.DefaultThiefAnimation();
         player.FlipSprite();
 
     }

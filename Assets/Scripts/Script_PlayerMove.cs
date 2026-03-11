@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AutoWalker : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 5f; // 2.5f default
     public float rightBoundary = 20f; // Set this to the end of your level
     public float leftBoundary = -6f;    // Set this to the start of your level
 
@@ -35,14 +35,7 @@ public class AutoWalker : MonoBehaviour
         if (transform.position.x <= leftBoundary && GameStateManager.Instance.secondTrip)
         {
             // ENDING EVALUATION
-            if (GameStateManager.Instance.money < GameStateManager.Instance.moneyThreshold)
-            {
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(0));
-            }
-            else
-            {
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(4));
-            }
+            GameStateManager.Instance.EvaluateEnding();
         }
     }
 }

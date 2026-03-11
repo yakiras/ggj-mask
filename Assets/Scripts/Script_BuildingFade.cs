@@ -38,7 +38,8 @@ public class BuildingFade : MonoBehaviour
         {
             if (isJewelryShop)
             {
-                if (GameStateManager.Instance.hasKey)
+                if (GameStateManager.Instance.hasKey ||
+                    GameStateManager.Instance.secondTrip)
                 {
                     playerNear = true;
                 }
@@ -63,7 +64,7 @@ public class BuildingFade : MonoBehaviour
             GameStateManager.Instance.shopRobbed = true;
             isStealing = true;
             GameStateManager.Instance.money += 100;
-            playerController.StartStealing();
+            playerController.Steal();
         }
     }
 
@@ -73,11 +74,8 @@ public class BuildingFade : MonoBehaviour
         {
             playerNear = false;
 
-            if (isStealing)
-            {
-                isStealing = false;
-                playerController.StopStealing();
-            }
+            if (playerController.currentDisguise.Equals("thief"))
+                playerController.DefaultThiefAnimation();
 
             if (isBallroom) ballroomLocked = true;
         }

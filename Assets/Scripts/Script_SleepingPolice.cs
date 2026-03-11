@@ -8,6 +8,7 @@ public class SleepingPolice : MonoBehaviour
     public Sprite[] idle;
     public Sprite[] wake;
     public Sprite[] hearts;
+    public Sprite[] awake;
     public float frameRate = 2.0f; // seconds per frame
 
     private SpriteRenderer sr;
@@ -61,16 +62,26 @@ public class SleepingPolice : MonoBehaviour
         {
             case "thief":
                 // ENDING 1: alone & prison
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
+                GameStateManager.Instance.InitializeEnding(1);
                 break;
             case "girl":
                 SetAnimation(hearts);
                 break;
             case "thug":
                 // ENDING 1: alone & prison
-                StartCoroutine(GameStateManager.Instance.DisplayEnding(1));
+                GameStateManager.Instance.InitializeEnding(1);
                 break;
         }
+    }
+
+    public void StayAwake()
+    {
+        Vector3 pos = transform.localPosition;
+        pos.x = -2f;
+        pos.y = -2.6f;
+        transform.localPosition = pos;
+        sr.sortingLayerName = "NPC(inside)";
+        SetAnimation(awake);
     }
 
     void SetAnimation(Sprite[] newAnimation)

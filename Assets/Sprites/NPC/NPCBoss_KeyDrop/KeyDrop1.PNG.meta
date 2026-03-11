@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 091a190787a7f0849b342dccbcf9409b
+guid: c45b562d4af97a94da373c3caf7c989f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6001009066017554441
-    second: IMG_0774_0
+      213: -3428629933111768021
+    second: KeyDrop1_0
   - first:
-      213: 141808889968620393
-    second: IMG_0774_1
+      213: 6634335328447611549
+    second: KeyDrop1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0774_0
+      name: KeyDrop1_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 10
-        width: 182
-        height: 387
+        x: 38
+        y: 65
+        width: 448
+        height: 364
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffff169c0228bca0800000000000000
-      internalID: -6001009066017554441
+      spriteID: b2c0a92dd3f0b60d0800000000000000
+      internalID: -3428629933111768021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_0774_1
+      name: KeyDrop1_1
       rect:
         serializedVersion: 2
-        x: 274
-        y: 307
-        width: 72
-        height: 38
+        x: 191
+        y: 380
+        width: 19
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 96372902f6ec7f100800000000000000
-      internalID: 141808889968620393
+      spriteID: d92c1fcb4d4e11c50800000000000000
+      internalID: 6634335328447611549
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2ad870f44015e24459a8b7306e7beb68
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0774_0: -6001009066017554441
-      IMG_0774_1: 141808889968620393
+      KeyDrop1_0: -3428629933111768021
+      KeyDrop1_1: 6634335328447611549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

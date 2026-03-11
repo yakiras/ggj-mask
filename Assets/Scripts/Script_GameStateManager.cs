@@ -6,13 +6,13 @@ public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance;
 
+    public bool broFollowing = false;
+    public int alertLevel = 0;
+
     public int money = 0;
     public int moneyThreshold = 100;
     public bool hasKey = false;
     public bool shopRobbed = false;
-    public string menuScene;
-    public string gameScene;
-    public string endScene;
     public bool secondTrip = false;
     public bool stopMoving = false;
     public bool atBankers = false;
@@ -32,40 +32,29 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    //public void BackToMainMenu()
-    //{
-    //    if (mainMenuGroup != null)
-    //    {
-    //        mainMenuGroup.SetActive(true);
-    //    }
-
-    //    if (tutorialGroup != null)
-    //    {
-    //        tutorialGroup.SetActive(false);
-    //    }
-
-    //    Debug.Log("Switched to Main Menu");
-    //}
-
-    public void BackToMenu()
-    {
-        SceneManager.LoadScene(menuScene);
-        money = 0;
-    }
-
-    public IEnumerator DisplayEnding(int endingNum)
+    public void InitializeEnding(int endingNum)
     {
         currentEnding = endingNum;
-        // stop player
-        stopMoving = true;
-        yield return new WaitForSeconds(1.5f);
-        
-        SceneManager.LoadScene(endScene);
+        StartCoroutine(MenuManager.Instance.DisplayEnding());
+    }
+
+    public void EvaluateEnding()
+    {
+        if (money < moneyThreshold)
+        {
+            InitializeEnding(0);
+        }
+        else
+        {
+            InitializeEnding(4);
+        }
     }
 
     public void ResetGame()
     {
         money = 0;
+        broFollowing = false;
+        alertLevel = 0;
         hasKey = false;
         shopRobbed = false;
         secondTrip = false;

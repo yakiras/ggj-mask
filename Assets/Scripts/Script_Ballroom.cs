@@ -13,23 +13,34 @@ public class Ballroom : MonoBehaviour
         frameRate = 0.5f;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (playerController.currentDisguise.Equals("girl"))
+                playerController.DefaultGirlAnimation();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             CheckDisguise();
         }
     }
+
     void CheckDisguise()
     {
         switch (playerController.currentDisguise)
         {
             case "thief":
                 AnimateChildrenWithRandomOffsets();
-                GameStateManager.Instance.money += 10;
+                GameStateManager.Instance.money += 25;
+                // add cha-ching sfx
                 break;
             case "girl":
-                // do dance animation
+                playerController.BlowKiss();
                 break;
             case "thug":
                 AnimateChildrenWithRandomOffsets();

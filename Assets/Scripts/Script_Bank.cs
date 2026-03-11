@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// This class evaluates & changes environment visuals/status
 public class Bank : MonoBehaviour
 {
     public JewelryBoss boss;
@@ -9,25 +10,23 @@ public class Bank : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            boss.Flip();
+            //boss.Flip();
             station.JailThug();
 
-            if (!boss.thug)
+            if (GameStateManager.Instance.alertLevel == 0)
             {
+                station.GatherPolicemen();
                 boss.ReturnToShop();
             }
-            else
+            if (GameStateManager.Instance.alertLevel == 1)
             {
-                if (GameStateManager.Instance.shopRobbed)
-                {
-                    GameStateManager.Instance.hasKey = false;
-                    boss.SpawnPolice();
-                    station.RemovePolicemen();
-                }
-                else
-                {
-                    boss.SpawnBodyguard();
-                }
+                station.AwakenPolice();
+                boss.SpawnBodyguard();
+            }
+            if (GameStateManager.Instance.alertLevel == 2)
+            {
+                boss.SpawnPolice();
+                station.RemovePolicemen();
             }
         }
     }

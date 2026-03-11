@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 091a190787a7f0849b342dccbcf9409b
+guid: a90ff3f2bfa307f49985c5d06a69b991
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6001009066017554441
-    second: IMG_0774_0
-  - first:
-      213: 141808889968620393
-    second: IMG_0774_1
+      213: -1799967271523877047
+    second: NPCBodyguard_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0774_0
+      name: NPCBodyguard_0
       rect:
         serializedVersion: 2
-        x: 166
-        y: 10
-        width: 182
-        height: 387
+        x: 69
+        y: 14
+        width: 306
+        height: 456
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffff169c0228bca0800000000000000
-      internalID: -6001009066017554441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_0774_1
-      rect:
-        serializedVersion: 2
-        x: 274
-        y: 307
-        width: 72
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 96372902f6ec7f100800000000000000
-      internalID: 141808889968620393
+      spriteID: 94f7d7d9d4b3507e0800000000000000
+      internalID: -1799967271523877047
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2ad870f44015e24459a8b7306e7beb68
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0774_0: -6001009066017554441
-      IMG_0774_1: 141808889968620393
+      NPCBodyguard_0: -1799967271523877047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

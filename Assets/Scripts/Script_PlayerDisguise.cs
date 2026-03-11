@@ -9,11 +9,17 @@ public class PlayerDisguise : MonoBehaviour
     public Sprite[] girlWalk;
     public Sprite[] thugWalk;
     public Sprite[] idle;
+
+    public Sprite[] blowKiss;
+    public Sprite[] cheers;
     public Sprite[] stealing;
+    public Sprite[] beatUp;
 
     public float fps = 5.0f;
+    public float coolDown = 2.0f;
     public bool inputEnabled = true;
 
+    private float currentFps;
     private float frameRate; // seconds per frame
 
     private SpriteRenderer sr;
@@ -24,9 +30,10 @@ public class PlayerDisguise : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        frameRate = 1.0f / fps;
+        currentFps = fps;
+        frameRate = 1.0f / currentFps;
         currentDisguise = "thief";
-        DefaultAnimation(); // default animation
+        DefaultThiefAnimation(); // default animation
     }
 
     void Update()
@@ -43,18 +50,27 @@ public class PlayerDisguise : MonoBehaviour
             {
                 if (Keyboard.current.digit1Key.wasPressedThisFrame)
                 {
+                    currentFps = fps;
+                    frameRate = 1.0f / currentFps;
+
                     currentDisguise = "thief";
-                    SetAnimation(thiefWalk);
+                    StartCoroutine(SetAnimationWithDelay(thiefWalk));
                 }
                 if (Keyboard.current.digit2Key.wasPressedThisFrame)
                 {
+                    currentFps = fps;
+                    frameRate = 1.0f / currentFps;
+
                     currentDisguise = "girl";
-                    SetAnimation(girlWalk);
+                    StartCoroutine(SetAnimationWithDelay(girlWalk));
                 }
                 if (Keyboard.current.digit3Key.wasPressedThisFrame)
                 {
+                    currentFps = fps;
+                    frameRate = 1.0f / currentFps;
+
                     currentDisguise = "thug";
-                    SetAnimation(thugWalk);
+                    StartCoroutine(SetAnimationWithDelay(thugWalk));
                 }
             }
         }
@@ -70,6 +86,47 @@ public class PlayerDisguise : MonoBehaviour
             sr.sprite = currentAnimation[currentFrame];
         }
     }
+    public void Steal()
+    {
+        StartCoroutine(SetAnimationWithDelay(stealing));
+        currentDisguise = "thief";
+    }
+
+    public void BlowKiss()
+    {
+        currentFps = 2f;
+        frameRate = 1f / currentFps;
+
+        StartCoroutine(SetAnimationWithDelay(blowKiss));
+        currentDisguise = "girl";
+    }
+
+    public void Cheers()
+    {
+        StartCoroutine(SetAnimationWithDelay(cheers));
+        currentDisguise = "thug";
+    }
+
+    public void GetBeatUp()
+    {
+        SetAnimationWithDelay(beatUp);
+    }
+
+    public void DefaultThiefAnimation()
+    {
+        currentFps = fps;
+        frameRate = 1f / currentFps;
+        SetAnimation(thiefWalk);
+        currentDisguise = "thief";
+    }
+
+    public void DefaultGirlAnimation()
+    {
+        currentFps = fps;
+        frameRate = 1f / currentFps;
+        SetAnimation(girlWalk);
+        currentDisguise = "girl";
+    }
 
     public void SetAnimation(Sprite[] newAnimation)
     {
@@ -81,29 +138,12 @@ public class PlayerDisguise : MonoBehaviour
             sr.sprite = currentAnimation[0];
     }
 
-    public IEnumerator SetAnimationWithDelay(Sprite[] anim, float seconds)
+    public IEnumerator SetAnimationWithDelay(Sprite[] anim)
     {
         inputEnabled = false;
         SetAnimation(anim);
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(coolDown);
         inputEnabled = true;
-    }
-
-    public void StartStealing()
-    {
-        inputEnabled = false;
-        SetAnimation(stealing);
-    }
-
-    public void StopStealing()
-    {
-        inputEnabled = true;
-        SetAnimation(thiefWalk);
-    }
-
-    public void DefaultAnimation()
-    {
-        SetAnimation(thiefWalk);
     }
 
     public void FlipSprite()
