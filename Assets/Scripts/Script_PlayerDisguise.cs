@@ -34,14 +34,21 @@ public class PlayerDisguise : MonoBehaviour
     private float timer;
     private bool playOnce = false;
     private Sprite[] nextAnimation;
+    private bool sfxAnimPlaying;
+
+    public AudioClip sfxMoney;
+    public AudioClip sfxKiss;
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         currentFps = fps;
         frameRate = 1.0f / currentFps;
         currentDisguise = "thief";
         DefaultThiefAnimation(); // default animation
+        sfxAnimPlaying = false;
     }
 
     void Update()
@@ -138,22 +145,23 @@ public class PlayerDisguise : MonoBehaviour
 
     public void Steal()
     {
-        StartCoroutine(SetAnimationWithDelay(stealing));
+        SetAnimation(stealing);
         currentDisguise = "thief";
+        StartCoroutine(PlaySFXLoop(sfxMoney));
     }
 
     public void BlowKiss()
     {
         currentFps = 3f;
         frameRate = 1f / currentFps;
-
-        StartCoroutine(SetAnimationWithDelay(blowKiss));
+        SetAnimation(blowKiss);
         currentDisguise = "girl";
+        StartCoroutine(PlaySFXLoop(sfxKiss));
     }
 
     public void Cheers()
     {
-        StartCoroutine(SetAnimationWithDelay(cheers));
+        SetAnimation(cheers);
         currentDisguise = "thug";
     }
 
@@ -162,12 +170,23 @@ public class PlayerDisguise : MonoBehaviour
         StartCoroutine(SetAnimationWithDelay(beatUp));
     }
 
+    private IEnumerator PlaySFXLoop(AudioClip clip)
+    {
+        sfxAnimPlaying = true;
+        while (sfxAnimPlaying)
+        {
+            audioSource.PlayOneShot(clip);
+            yield return new WaitForSeconds(0.6f);
+        }
+    }
+
     public void DefaultThiefAnimation()
     {
         currentFps = fps;
         frameRate = 1f / currentFps;
         SetAnimation(thiefWalk);
         currentDisguise = "thief";
+        sfxAnimPlaying = false;
     }
 
     public void DefaultGirlAnimation()
@@ -176,6 +195,7 @@ public class PlayerDisguise : MonoBehaviour
         frameRate = 1f / currentFps;
         SetAnimation(girlWalk);
         currentDisguise = "girl";
+        sfxAnimPlaying = false;
     }
 
     private IEnumerator StartCooldown()

@@ -12,14 +12,14 @@ public class Ballroom : MonoBehaviour
     public Transform people;
     public GameObject police;
     private float frameRate;
-    private bool animating;
+    private string knownDisguise;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         police.SetActive(false);
         frameRate = 0.5f;
-        animating = false;
+        knownDisguise = string.Empty;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -46,18 +46,21 @@ public class Ballroom : MonoBehaviour
 
     private void CheckDisguise()
     {
-        switch (playerController.currentDisguise)
+        if (knownDisguise != playerController.currentDisguise)
         {
-            case "thief":
-                AnimateChildrenWithRandomOffsets();
-                // add cha-ching sfx
-                break;
-            case "girl":
-                playerController.BlowKiss();
-                break;
-            case "thug":
-                AnimateChildrenWithRandomOffsets();
-                break;
+            knownDisguise = playerController.currentDisguise;
+            switch (playerController.currentDisguise)
+            {
+                case "thief":
+                    AnimateChildrenWithRandomOffsets();
+                    break;
+                case "girl":
+                    playerController.BlowKiss();
+                    break;
+                case "thug":
+                    AnimateChildrenWithRandomOffsets();
+                    break;
+            }
         }
     }
 
@@ -76,7 +79,7 @@ public class Ballroom : MonoBehaviour
 
     public void AnimateChildrenWithRandomOffsets()
     {
-        if (people != null && !animating)
+        if (people != null)
         {
             foreach (Transform child in people)
             {
@@ -89,7 +92,6 @@ public class Ballroom : MonoBehaviour
                 }
             }
         }
-        animating = true;
     }
 
     IEnumerator AnimateChild(SpriteRenderer sr)
