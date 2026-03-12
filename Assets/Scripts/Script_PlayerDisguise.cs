@@ -36,9 +36,12 @@ public class PlayerDisguise : MonoBehaviour
     private Sprite[] nextAnimation;
     private bool sfxAnimPlaying;
 
+    public AudioClip sfxPop;
     public AudioClip sfxMoney;
     public AudioClip sfxKiss;
+    private AudioClip currentSfxLoop;
     private AudioSource audioSource;
+    private Coroutine sfxRoutine;
 
     void Start()
     {
@@ -119,8 +122,16 @@ public class PlayerDisguise : MonoBehaviour
         }
     }
 
+    private void PlayTransformSFX()
+    {
+        sfxAnimPlaying = false;
+        audioSource.Stop();
+        audioSource.PlayOneShot(sfxPop);
+    }
+
     private void TransformDisguise(string newDisguise)
     {
+        PlayTransformSFX();
         currentDisguise = newDisguise;
         gameUI.SwapIcon(currentDisguise);
         playOnce = true;
@@ -147,7 +158,9 @@ public class PlayerDisguise : MonoBehaviour
     {
         SetAnimation(stealing);
         currentDisguise = "thief";
-        StartCoroutine(PlaySFXLoop(sfxMoney));
+
+        currentSfxLoop = sfxMoney;
+        StartSFXLoop();
     }
 
     public void BlowKiss()
@@ -156,7 +169,9 @@ public class PlayerDisguise : MonoBehaviour
         frameRate = 1f / currentFps;
         SetAnimation(blowKiss);
         currentDisguise = "girl";
-        StartCoroutine(PlaySFXLoop(sfxKiss));
+
+        currentSfxLoop = sfxKiss;
+        StartSFXLoop();
     }
 
     public void Cheers()
@@ -170,12 +185,17 @@ public class PlayerDisguise : MonoBehaviour
         StartCoroutine(SetAnimationWithDelay(beatUp));
     }
 
-    private IEnumerator PlaySFXLoop(AudioClip clip)
+    private void StartSFXLoop()
     {
         sfxAnimPlaying = true;
+        if (sfxRoutine == null)
+            sfxRoutine = StartCoroutine(PlaySFXLoop());
+    }
+    private IEnumerator PlaySFXLoop()
+    {
         while (sfxAnimPlaying)
         {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(currentSfxLoop);
             yield return new WaitForSeconds(0.6f);
         }
     }

@@ -9104,6 +9104,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1880898002}
     - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
+      propertyPath: sfxPop
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a41740ba0f92c54ca100b88772f0475, type: 3}
+    - target: {fileID: 5528735213653047108, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: sfxKiss
       value: 
       objectReference: {fileID: 8300000, guid: 611d517dbeb151c439d9e47966c9e45b, type: 3}
