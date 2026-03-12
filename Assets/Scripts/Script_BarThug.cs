@@ -18,8 +18,13 @@ public class BarThug : MonoBehaviour
     private int currentFrame;
     private float timer;
 
+    public AudioClip sfxHearts;
+    public AudioClip sfxFight;
+    private AudioHelper audioHelper;
+
     void Start()
     {
+        audioHelper = GetComponent<AudioHelper>();
         sr = GetComponent<SpriteRenderer>();
         frameRate = 0.2f;
         SetAnimation(thugIdle); // default animation
@@ -56,6 +61,8 @@ public class BarThug : MonoBehaviour
 
         if (collision.CompareTag("Popo"))
         {
+            audioHelper.PlayOnce(sfxFight);
+
             SetAnimation(thugFight);
             following = false;
             GameStateManager.Instance.broFollowing = false;
@@ -95,6 +102,7 @@ public class BarThug : MonoBehaviour
                 GameStateManager.Instance.InitializeEnding(1);
                 break;
             case "girl":
+                audioHelper.PlayOnce(sfxHearts);
                 SetAnimation(thugHearts);
                 GameStateManager.Instance.broFollowing = true;
                 if (playerController.transform.position.x > transform.position.x)
@@ -117,6 +125,7 @@ public class BarThug : MonoBehaviour
 
     void BeatUpPlayer()
     {
+        audioHelper.PlayOnce(sfxFight);
         playerController.GetBeatUp();
         sr.enabled = false;
         GameStateManager.Instance.InitializeEnding(1);

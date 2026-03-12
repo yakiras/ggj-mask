@@ -37,14 +37,17 @@ public class PlayerDisguise : MonoBehaviour
     private bool sfxAnimPlaying;
 
     public AudioClip sfxPop;
+    public AudioClip sfxCheers;
     public AudioClip sfxMoney;
     public AudioClip sfxKiss;
     private AudioClip currentSfxLoop;
     private AudioSource audioSource;
+    private AudioHelper audioHelper;
     private Coroutine sfxRoutine;
 
     void Start()
     {
+        audioHelper = GetComponent<AudioHelper>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         currentFps = fps;
@@ -178,6 +181,8 @@ public class PlayerDisguise : MonoBehaviour
     {
         SetAnimation(cheers);
         currentDisguise = "thug";
+
+        audioHelper.PlayOnce(sfxCheers);
     }
 
     public void GetBeatUp()
