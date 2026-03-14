@@ -9,6 +9,9 @@ public class GameStateManager : MonoBehaviour
     public bool broFollowing = false;
     public int alertLevel = 0;
 
+    public bool stealAnimLocked = false;
+    public bool kissAnimLocked = false;
+
     public int money = 0;
     public int moneyThreshold = 100;
     public bool hasKey = false;

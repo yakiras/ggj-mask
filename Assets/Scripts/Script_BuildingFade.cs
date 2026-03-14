@@ -39,6 +39,12 @@ public class BuildingFade : MonoBehaviour
         {
             if (isJewelryShop)
             {
+                if (GameStateManager.Instance.hasKey &&
+                    !GameStateManager.Instance.shopRobbed)
+                {
+                    GameStateManager.Instance.stealAnimLocked = true;
+                }
+
                 if (GameStateManager.Instance.hasKey ||
                     GameStateManager.Instance.secondTrip)
                 {
@@ -47,7 +53,18 @@ public class BuildingFade : MonoBehaviour
             }
             else if (isBallroom)
             {
-                if (!ballroomLocked) playerNear = true;
+                if (!ballroomLocked)
+                {
+                    GameStateManager.Instance.stealAnimLocked = true;
+                    GameStateManager.Instance.kissAnimLocked = true;
+                    playerNear = true;
+                }
+            }
+            else if (isBar)
+            {
+                playerNear = true;
+                if (!GameStateManager.Instance.barRobbed)
+                    GameStateManager.Instance.stealAnimLocked = true;
             }
             else { playerNear = true; }
         }
@@ -92,11 +109,16 @@ public class BuildingFade : MonoBehaviour
         {
             playerNear = false;
 
+            GameStateManager.Instance.stealAnimLocked = false;
+            GameStateManager.Instance.kissAnimLocked = false;
+
             if (playerController.currentDisguise.Equals("thief"))
                 playerController.DefaultThiefAnimation();
 
             if (isBallroom && !GameStateManager.Instance.ballroomRobbed)
+            {
                 ballroomLocked = true;
+            }
         }
     }
 }

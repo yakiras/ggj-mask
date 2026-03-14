@@ -26,6 +26,8 @@ public class Ballroom : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (!GameStateManager.Instance.ballroomRobbed)
+                audioSource.Stop();
             if (playerController.currentDisguise.Equals("girl"))
                 playerController.DefaultGirlAnimation();
         }
@@ -55,6 +57,8 @@ public class Ballroom : MonoBehaviour
                     AnimateChildrenWithRandomOffsets();
                     break;
                 case "girl":
+                    GameStateManager.Instance.stealAnimLocked = true;
+                    GameStateManager.Instance.kissAnimLocked = true;
                     playerController.BlowKiss();
                     break;
                 case "thug":
@@ -70,6 +74,11 @@ public class Ballroom : MonoBehaviour
         {
             GameStateManager.Instance.InitializeEnding(4);
         }
+    }
+
+    public void LockBallroom()
+    {
+        audioSource.Stop();
     }
 
     public void SpawnPolice()

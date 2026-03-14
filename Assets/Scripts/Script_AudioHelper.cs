@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AudioHelper : MonoBehaviour
 {
     private AudioSource audioSource;
-    private Coroutine sfxRoutine;
+    private Coroutine loopRoutine;
 
     // Tracks clips currently playing on this object
     private HashSet<AudioClip> currentlyPlaying = new HashSet<AudioClip>();
@@ -16,6 +16,60 @@ public class AudioHelper : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
+    public void PlayLoop(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null) return;
+
+        // Prevent starting multiple loops
+        if (loopRoutine != null)
+            return;
+
+        loopRoutine = StartCoroutine(LoopRoutine(clip, volume));
+    }
+
+    private IEnumerator LoopRoutine(AudioClip clip, float volume)
+    {
+        while (true)
+        {
+            audioSource.PlayOneShot(clip, volume);
+            yield return new WaitForSeconds(clip.length);
+        }
+    }
+
+    public void PlaySingle(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null) return;
+
+        // Stop any looping coroutine
+        if (loopRoutine != null)
+        {
+            StopCoroutine(loopRoutine);
+            loopRoutine = null;
+        }
+
+        audioSource.Stop();        // stop anything currently playing
+        audioSource.loop = false;  // ensure no looping
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.Play();
+    }
+
+
+
+    public void StopLoop()
+    {
+        if (loopRoutine != null)
+        {
+            StopCoroutine(loopRoutine);
+            loopRoutine = null;
+        }
+    }
+
+    public void StopPlaying()
+    {
+        audioSource.Stop();
     }
 
     /// <summary>

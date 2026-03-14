@@ -20,6 +20,7 @@ public class BarThug : MonoBehaviour
 
     public AudioClip sfxHearts;
     public AudioClip sfxFight;
+    public AudioClip sfxBro;
     private AudioHelper audioHelper;
 
     void Start()
@@ -82,6 +83,7 @@ public class BarThug : MonoBehaviour
                     Debug.Log("alert > 0");
                     GameStateManager.Instance.broFollowing = true;
                     sr.sortingLayerName = "Player";
+                    audioHelper.PlaySingle(sfxBro);
                 }
             }
 
@@ -125,7 +127,7 @@ public class BarThug : MonoBehaviour
 
     void BeatUpPlayer()
     {
-        audioHelper.PlayOnce(sfxFight);
+        audioHelper.PlayOnce(sfxFight, 0.5f);
         playerController.GetBeatUp();
         sr.enabled = false;
         GameStateManager.Instance.InitializeEnding(1);

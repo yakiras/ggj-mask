@@ -25,7 +25,6 @@ public class PlayerDisguise : MonoBehaviour
     public float coolDown = 1.5f;
     public bool inputEnabled = true;
 
-    private float currentFps;
     private float frameRate; // seconds per frame
 
     private SpriteRenderer sr;
@@ -34,27 +33,22 @@ public class PlayerDisguise : MonoBehaviour
     private float timer;
     private bool playOnce = false;
     private Sprite[] nextAnimation;
-    private bool sfxAnimPlaying;
 
     public AudioClip sfxPop;
     public AudioClip sfxCheers;
     public AudioClip sfxMoney;
     public AudioClip sfxKiss;
-    private AudioClip currentSfxLoop;
     private AudioSource audioSource;
     private AudioHelper audioHelper;
-    private Coroutine sfxRoutine;
 
     void Start()
     {
         audioHelper = GetComponent<AudioHelper>();
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
-        currentFps = fps;
-        frameRate = 1.0f / currentFps;
+        frameRate = 1.0f / fps;
         currentDisguise = "thief";
         DefaultThiefAnimation(); // default animation
-        sfxAnimPlaying = false;
     }
 
     void Update()
@@ -71,22 +65,22 @@ public class PlayerDisguise : MonoBehaviour
             {
                 if (Keyboard.current.digit1Key.wasPressedThisFrame)
                 {
-                    currentFps = fps;
-                    frameRate = 1.0f / currentFps;
+                    frameRate = 1.0f / fps;
+                    audioHelper.StopLoop();
 
                     TransformDisguise("thief");
                 }
                 if (Keyboard.current.digit2Key.wasPressedThisFrame)
                 {
-                    currentFps = fps;
-                    frameRate = 1.0f / currentFps;
+                    frameRate = 1.0f / fps;
+                    audioHelper.StopLoop();
 
                     TransformDisguise("girl");
                 }
                 if (Keyboard.current.digit3Key.wasPressedThisFrame)
                 {
-                    currentFps = fps;
-                    frameRate = 1.0f / currentFps;
+                    frameRate = 1.0f / fps;
+                    audioHelper.StopLoop();
 
                     TransformDisguise("thug");
                 }
@@ -127,7 +121,6 @@ public class PlayerDisguise : MonoBehaviour
 
     private void PlayTransformSFX()
     {
-        sfxAnimPlaying = false;
         audioSource.Stop();
         audioSource.PlayOneShot(sfxPop);
     }
@@ -142,12 +135,18 @@ public class PlayerDisguise : MonoBehaviour
         if (newDisguise == "thief")
         {
             SetAnimation(thiefTransform);
-            nextAnimation = thiefWalk;
+            if (!GameStateManager.Instance.stealAnimLocked)
+                nextAnimation = thiefWalk;
+            else
+                nextAnimation = stealing;
         }
         if (newDisguise == "girl")
         {
             SetAnimation(girlTransform);
-            nextAnimation = girlWalk;
+            if (!GameStateManager.Instance.kissAnimLocked)
+                nextAnimation = girlWalk;
+            else
+                nextAnimation = blowKiss;
         }
         if (newDisguise == "thug")
         {
@@ -162,19 +161,15 @@ public class PlayerDisguise : MonoBehaviour
         SetAnimation(stealing);
         currentDisguise = "thief";
 
-        currentSfxLoop = sfxMoney;
-        StartSFXLoop();
+        audioHelper.PlayLoop(sfxMoney);
     }
 
     public void BlowKiss()
     {
-        currentFps = 3f;
-        frameRate = 1f / currentFps;
         SetAnimation(blowKiss);
         currentDisguise = "girl";
 
-        currentSfxLoop = sfxKiss;
-        StartSFXLoop();
+        audioHelper.PlayLoop(sfxKiss);
     }
 
     public void Cheers()
@@ -182,45 +177,31 @@ public class PlayerDisguise : MonoBehaviour
         SetAnimation(cheers);
         currentDisguise = "thug";
 
-        audioHelper.PlayOnce(sfxCheers);
+        audioHelper.PlaySingle(sfxCheers);
     }
 
     public void GetBeatUp()
     {
+        audioHelper.StopLoop();
         StartCoroutine(SetAnimationWithDelay(beatUp));
-    }
-
-    private void StartSFXLoop()
-    {
-        sfxAnimPlaying = true;
-        if (sfxRoutine == null)
-            sfxRoutine = StartCoroutine(PlaySFXLoop());
-    }
-    private IEnumerator PlaySFXLoop()
-    {
-        while (sfxAnimPlaying)
-        {
-            audioSource.PlayOneShot(currentSfxLoop);
-            yield return new WaitForSeconds(0.6f);
-        }
     }
 
     public void DefaultThiefAnimation()
     {
-        currentFps = fps;
-        frameRate = 1f / currentFps;
+        frameRate = 1.0f / fps;
         SetAnimation(thiefWalk);
         currentDisguise = "thief";
-        sfxAnimPlaying = false;
+
+        audioHelper.StopLoop();
     }
 
     public void DefaultGirlAnimation()
     {
-        currentFps = fps;
-        frameRate = 1f / currentFps;
+        frameRate = 1.0f / fps;
         SetAnimation(girlWalk);
         currentDisguise = "girl";
-        sfxAnimPlaying = false;
+
+        audioHelper.StopLoop();
     }
 
     private IEnumerator StartCooldown()
@@ -234,6 +215,12 @@ public class PlayerDisguise : MonoBehaviour
     public void SetAnimation(Sprite[] newAnimation)
     {
         if (newAnimation == currentAnimation) return;
+
+        if (newAnimation == blowKiss)
+            frameRate = 0.3f;
+        else
+            frameRate = 1f / fps;
+
         currentAnimation = newAnimation;
         currentFrame = 0;
         timer = 0f;

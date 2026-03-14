@@ -6,6 +6,13 @@ public class JewelryBoss : MonoBehaviour
 {
     public PlayerDisguise playerController;
 
+    public AudioClip sfxHearts;
+    public AudioClip sfxGun;
+    public AudioClip sfxSad;
+    public AudioClip sfxGasp;
+    public AudioClip sfxConfused;
+    public AudioClip sfxSiren;
+
     public GameObject[] policemen;
     public GameObject bodyguard;
 
@@ -18,16 +25,18 @@ public class JewelryBoss : MonoBehaviour
     public Sprite[] keyDrop;
     public Sprite[] keyMissing;
 
-    private float frameRate = 0.5f; // seconds per frame
+    private float frameRate = 0.4f; // seconds per frame
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
     private bool playOnce = false;
+    private AudioHelper audioHelper;
 
     void Start()
     {
+        audioHelper = GetComponent<AudioHelper>();
         sr = GetComponent<SpriteRenderer>();
         SetAnimation(idle); // default animation
 
@@ -91,16 +100,19 @@ public class JewelryBoss : MonoBehaviour
             case "thief":
                 GameStateManager.Instance.alertLevel = 1;
                 SetAnimation(shock);
+                audioHelper.PlaySingle(sfxGasp);
                 break;
             case "girl":
                 // alert level stays at 0
                 SetAnimation(hearts);
+                audioHelper.PlaySingle(sfxHearts);
                 break;
             case "thug":
                 GameStateManager.Instance.alertLevel = 1;
                 playOnce = true;
                 SetAnimation(keyDrop);
                 GameStateManager.Instance.hasKey = true;
+                audioHelper.PlaySingle(sfxConfused);
                 break;
         }
     }
@@ -110,7 +122,10 @@ public class JewelryBoss : MonoBehaviour
         if (playerController.currentDisguise.Equals("girl"))
         {
             if (!GameStateManager.Instance.shopRobbed)
+            {
                 SetAnimation(hearts);
+                audioHelper.PlaySingle(sfxHearts);
+            }
         }
         else // thief or thug
         {
@@ -120,12 +135,14 @@ public class JewelryBoss : MonoBehaviour
                 {
                     // ENDING 4: bro & prison
                     SetAnimation(readyGun);
+                    audioHelper.PlaySingle(sfxGun);
                     GameStateManager.Instance.InitializeEnding(4);
                 }
                 else
                 {
                     // ENDING 3: fucking dead
                     SetAnimation(readyGun);
+                    audioHelper.PlaySingle(sfxGun);
                     GameStateManager.Instance.InitializeEnding(3);
                 }
             }
@@ -133,11 +150,13 @@ public class JewelryBoss : MonoBehaviour
             {
                 // ENDING 3: fucking dead
                 SetAnimation(readyGun);
+                audioHelper.PlaySingle(sfxGun);
                 GameStateManager.Instance.InitializeEnding(3);
             }
             if (GameStateManager.Instance.alertLevel == 2)
             {
                 // ENDING 4: bro & prison
+                audioHelper.PlayOnce(sfxSiren);
                 GameStateManager.Instance.InitializeEnding(4);
             }
         }
@@ -176,7 +195,8 @@ public class JewelryBoss : MonoBehaviour
         {
             police.SetActive(true);
         }
-        SetAnimation(idle);
+        SetAnimation(sad);
+        audioHelper.PlayLoop(sfxSad, 0.6f);
     }
 
     public void Flip()

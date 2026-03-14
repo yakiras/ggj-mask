@@ -11,14 +11,20 @@ public class SleepingPolice : MonoBehaviour
     public Sprite[] awake;
     public float frameRate = 2.0f; // seconds per frame
 
+    public AudioClip sfxSirens;
+    public AudioClip sfxHearts;
+    public AudioClip sfxGasp;
+
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
     private int currentFrame;
     private float timer;
     private bool canCheckDisguise;
+    private AudioHelper audioHelper;
 
     void Start()
     {
+        audioHelper = GetComponent<AudioHelper>();
         sr = GetComponent<SpriteRenderer>();
         SetAnimation(idle); // default animation
         canCheckDisguise = false;
@@ -54,7 +60,9 @@ public class SleepingPolice : MonoBehaviour
 
     IEnumerator WaitBeforeCheck()
     {
+        audioHelper.StopPlaying();
         SetAnimation(wake);
+        audioHelper.PlayOnce(sfxGasp);
         yield return new WaitForSeconds(1.0f);
         CheckDisguise();
         canCheckDisguise = true;
@@ -66,13 +74,16 @@ public class SleepingPolice : MonoBehaviour
         {
             case "thief":
                 // ENDING 0: alone & poor
+                audioHelper.PlayOnce(sfxSirens);
                 GameStateManager.Instance.InitializeEnding(0);
                 break;
             case "girl":
+                audioHelper.PlayOnce(sfxHearts);
                 SetAnimation(hearts);
                 break;
             case "thug":
                 // ENDING 0: alone & poor
+                audioHelper.PlayOnce(sfxSirens);
                 GameStateManager.Instance.InitializeEnding(0);
                 break;
         }
@@ -83,6 +94,7 @@ public class SleepingPolice : MonoBehaviour
         if (!playerController.currentDisguise.Equals("girl"))
         {
             // ENDING 4: bro & prison
+            audioHelper.PlayOnce(sfxSirens);
             GameStateManager.Instance.InitializeEnding(4);
         }
     }
