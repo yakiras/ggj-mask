@@ -107,6 +107,7 @@ public class BarThug : MonoBehaviour
                 audioHelper.PlayOnce(sfxHearts);
                 SetAnimation(thugHearts);
                 GameStateManager.Instance.broFollowing = true;
+                sr.sortingLayerName = "NPC(outside)";
                 if (playerController.transform.position.x > transform.position.x)
                     sr.flipX = true;
                 else sr.flipX = false;

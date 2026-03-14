@@ -17,6 +17,10 @@ public class Ending : MonoBehaviour
 
     public Sprite[] ending3OP;
 
+    public AudioClip sfxGunshot;
+    public AudioClip bgmSad;
+    public AudioClip bgmHappy;
+
     public string menuScene;
     public string gameScene;
     public string endScene;
@@ -28,17 +32,37 @@ public class Ending : MonoBehaviour
     private int currentFrame;
     private float timer;
     private bool playOnce;
+    private AudioSource audioSource;
 
     //private int ending;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         frameRate = 1.0f / fps;
         canvas.enabled = false;
         playOnce = false;
 
-        //ending = 3;
+        switch (GameStateManager.Instance.currentEnding)
+        {
+            case 2:
+                audioSource.loop = true;
+                audioSource.PlayOneShot(bgmHappy);
+                break;
+            case 3:
+                audioSource.loop = false;
+                audioSource.PlayOneShot(sfxGunshot);
+                break;
+            case 6:
+                audioSource.loop = true;
+                audioSource.PlayOneShot(bgmHappy);
+                break;
+            default:
+                audioSource.loop = true;
+                audioSource.PlayOneShot(bgmSad);
+                break;
+        }
 
         switch (GameStateManager.Instance.currentEnding)
         //switch (ending)
@@ -94,6 +118,8 @@ public class Ending : MonoBehaviour
                     currentAnimation = ending3;
                     currentFrame = 0;
                     playOnce = false;
+                    audioSource.loop = true;
+                    audioSource.PlayOneShot(bgmSad);
                     return;
                 }
             }

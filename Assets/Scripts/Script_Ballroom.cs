@@ -84,6 +84,7 @@ public class Ballroom : MonoBehaviour
     public void SpawnPolice()
     {
         police.SetActive(true);
+        audioSource.Stop();
     }
 
     public void AnimateChildrenWithRandomOffsets()

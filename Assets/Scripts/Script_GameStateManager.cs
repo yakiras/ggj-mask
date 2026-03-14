@@ -18,6 +18,7 @@ public class GameStateManager : MonoBehaviour
     public bool shopRobbed = false;
     public bool barRobbed = false;
     public bool ballroomRobbed = false;
+    public bool ballroomLocked = false;
     public bool secondTrip = false;
     public bool stopMoving = false;
     public bool atBankers = false;
@@ -63,10 +64,16 @@ public class GameStateManager : MonoBehaviour
 
     public void ResetGame()
     {
+        stealAnimLocked = false;
+        kissAnimLocked = false;
+
         money = 0;
         broFollowing = false;
         alertLevel = 0;
         hasKey = false;
+        ballroomLocked = false;
+        ballroomRobbed = false;
+        barRobbed = false;
         shopRobbed = false;
         secondTrip = false;
         stopMoving = false;

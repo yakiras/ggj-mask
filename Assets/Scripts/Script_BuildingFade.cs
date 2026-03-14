@@ -10,8 +10,6 @@ public class BuildingFade : MonoBehaviour
     public bool isBar = false;
 
     private bool playerNear = false;
-    private bool ballroomLocked = false;
-    //private bool isStealing = false;
 
     void Update()
     {
@@ -53,7 +51,7 @@ public class BuildingFade : MonoBehaviour
             }
             else if (isBallroom)
             {
-                if (!ballroomLocked)
+                if (!GameStateManager.Instance.ballroomLocked)
                 {
                     GameStateManager.Instance.stealAnimLocked = true;
                     GameStateManager.Instance.kissAnimLocked = true;
@@ -117,7 +115,7 @@ public class BuildingFade : MonoBehaviour
 
             if (isBallroom && !GameStateManager.Instance.ballroomRobbed)
             {
-                ballroomLocked = true;
+                GameStateManager.Instance.ballroomLocked = true;
             }
         }
     }

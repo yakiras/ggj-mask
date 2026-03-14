@@ -13,18 +13,11 @@ public class MenuManager : MonoBehaviour
     public string gameScene;
     public string endScene;
 
-    void Awake()
+    void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject); // remove duplicates
-        }
+        Instance = this;
     }
+
 
     public void StartTutorial()
     {

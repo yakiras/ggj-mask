@@ -177,7 +177,7 @@ public class PlayerDisguise : MonoBehaviour
         SetAnimation(cheers);
         currentDisguise = "thug";
 
-        audioHelper.PlaySingle(sfxCheers);
+        audioHelper.PlayOnce(sfxCheers);
     }
 
     public void GetBeatUp()

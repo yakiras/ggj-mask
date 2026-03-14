@@ -1244,8 +1244,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -495711631
-  m_SortingLayer: 6
+  m_SortingLayerID: 1782605747
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3353708254531383000, guid: 0c8272d662b5a5d47a9a184135f2e337, type: 3}
@@ -3479,7 +3479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &778203619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3502,6 +3502,7 @@ MonoBehaviour:
   shopRobbed: 0
   barRobbed: 0
   ballroomRobbed: 0
+  ballroomLocked: 0
   secondTrip: 0
   stopMoving: 0
   atBankers: 0
@@ -5651,8 +5652,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 27488291
-  m_SortingLayer: 7
+  m_SortingLayerID: 788873467
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3370591516462746447, guid: 9a4414ec175306f498a14fae71f123b8, type: 3}
@@ -7104,10 +7105,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 12.682785
-  MaxDistance: 15
+  MinDistance: 2
+  MaxDistance: 8.754007
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -7115,19 +7116,19 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.5
+      time: 0.845519
       value: 1
-      inSlope: -2.0008
-      outSlope: -2.0008
+      inSlope: -1.1831785
+      outSlope: -1.1831785
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -0.5002
-      outSlope: -0.5002
+      value: 0.26711172
+      inSlope: -0.84585696
+      outSlope: -0.84585696
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -9833,7 +9834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3013900806911740515, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3013900806911740515, guid: b095ea3917d80984a9374ebfbd090238, type: 3}
       propertyPath: rightBoundary
