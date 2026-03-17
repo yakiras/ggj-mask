@@ -9,6 +9,7 @@ public class BarThug : MonoBehaviour
     public Sprite[] thugIdle;
     public Sprite[] thugHearts;
     public Sprite[] thugFight;
+    public Sprite[] thugWalk;
 
     private bool following = false;
 
@@ -84,6 +85,7 @@ public class BarThug : MonoBehaviour
                     GameStateManager.Instance.broFollowing = true;
                     sr.sortingLayerName = "Player";
                     audioHelper.PlaySingle(sfxBro);
+                    SetAnimation(thugWalk);
                 }
             }
 

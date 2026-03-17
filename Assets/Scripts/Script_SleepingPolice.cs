@@ -14,6 +14,7 @@ public class SleepingPolice : MonoBehaviour
     public AudioClip sfxSirens;
     public AudioClip sfxHearts;
     public AudioClip sfxGasp;
+    public AudioClip sfxGun;
 
     private SpriteRenderer sr;
     private Sprite[] currentAnimation;
@@ -62,7 +63,7 @@ public class SleepingPolice : MonoBehaviour
     {
         audioHelper.StopPlaying();
         SetAnimation(wake);
-        audioHelper.PlayOnce(sfxGasp);
+        //audioHelper.PlayOnce(sfxGasp);
         yield return new WaitForSeconds(1.0f);
         CheckDisguise();
         canCheckDisguise = true;
@@ -82,9 +83,9 @@ public class SleepingPolice : MonoBehaviour
                 SetAnimation(hearts);
                 break;
             case "thug":
-                // ENDING 0: alone & poor
-                audioHelper.PlayOnce(sfxSirens);
-                GameStateManager.Instance.InitializeEnding(0);
+                // ENDING 3: fucking dead
+                audioHelper.PlayOnce(sfxGun);
+                GameStateManager.Instance.InitializeEnding(3);
                 break;
         }
     }
